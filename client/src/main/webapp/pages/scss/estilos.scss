@@ -1,0 +1,192 @@
+//////////////////////////////////////////////////
+////           COLORES DE LA APLICACIÓN         //
+//////////////////////////////////////////////////
+
+$cafe:#926037;
+$rosita:#ED008C;
+$naranja:#EB5731;
+$turquesa:#24AAE1;
+$verde_pasto:#35B548;
+$moradouva:#8E288D;
+$cafeclaro:#C38049;
+$marfil:#F9F2EC;
+//colores para las letras
+$colores-letras: (
+$rosita,
+$naranja,
+$turquesa,
+$verde_pasto,
+$moradouva,
+$marfil
+);
+//////// Estilos para página perfil //////////
+
+
+/*estilos para el logotipo*/
+body{
+    font-size: 16px;//fuente base
+}
+
+#logo{
+    img{
+        margin-bottom: 2.2rem;
+    }
+}
+#botones_comienzo{
+    .opcion_menu{
+        font-size: 5rem;
+        font-family: impact;
+        text-decoration: none;
+        text-shadow:0.16rem 0.16rem white;
+        display: block;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+        opacity: 0.9;
+    }
+}
+#botones_comienzo{
+    :nth-of-type(1){
+        :nth-child(1){
+            color: nth( $colores-letras, random( length( $colores-letras) ) );
+        }
+        :nth-child(2){
+            color: nth( $colores-letras, random( length( $colores-letras) ) );
+        }
+        :nth-child(3){
+            color: nth( $colores-letras, random( length( $colores-letras) ) );
+        }
+        :nth-child(4){
+            color: nth( $colores-letras, random( length( $colores-letras) ) );
+        }
+        :nth-child(5){
+            color: nth( $colores-letras, random( length( $colores-letras) ) );
+        }
+        :nth-child(6){
+            color: nth( $colores-letras, random( length( $colores-letras) ) );
+        }
+        :nth-child(7){
+            color: nth( $colores-letras, random( length( $colores-letras) ) );
+        }
+    }
+
+    :nth-of-type(2){
+        :nth-child(1){
+            color: nth( $colores-letras, random( length( $colores-letras) ) );
+        }
+        :nth-child(2){
+            color: nth( $colores-letras, random( length( $colores-letras) ) );
+        }
+        :nth-child(3){
+            color: nth( $colores-letras, random( length( $colores-letras) ) );
+        }
+        :nth-child(4){
+            color: nth( $colores-letras, random( length( $colores-letras) ) );
+        }
+        :nth-child(5){
+            color: nth( $colores-letras, random( length( $colores-letras) ) );
+        }
+        :nth-child(6){
+            color: nth( $colores-letras, random( length( $colores-letras) ) );
+        }
+        :nth-child(7){
+            color: nth( $colores-letras, random( length( $colores-letras) ) );
+        }
+    }
+
+    :nth-of-type(3){
+        :nth-child(1){
+            color: nth( $colores-letras, random( length( $colores-letras) ) );
+        }
+        :nth-child(2){
+            color: nth( $colores-letras, random( length( $colores-letras) ) );
+        }
+        :nth-child(3){
+            color: nth( $colores-letras, random( length( $colores-letras) ) );
+        }
+        :nth-child(4){
+            color: nth( $colores-letras, random( length( $colores-letras) ) );
+        }
+        :nth-child(5){
+            color: nth( $colores-letras, random( length( $colores-letras) ) );
+        }
+        :nth-child(6){
+            color: nth( $colores-letras, random( length( $colores-letras) ) );
+        }
+        :nth-child(7){
+            color: nth( $colores-letras, random( length( $colores-letras) ) );
+        }
+    }
+
+    :nth-of-type(4){
+        :nth-child(1){
+            color: nth( $colores-letras, random( length( $colores-letras) ) );
+        }
+        :nth-child(2){
+            color: nth( $colores-letras, random( length( $colores-letras) ) );
+        }
+        :nth-child(3){
+            color: nth( $colores-letras, random( length( $colores-letras) ) );
+        }
+        :nth-child(4){
+            color: nth( $colores-letras, random( length( $colores-letras) ) );
+        }
+        :nth-child(5){
+            color: nth( $colores-letras, random( length( $colores-letras) ) );
+        }
+        :nth-child(6){
+            color: nth( $colores-letras, random( length( $colores-letras) ) );
+        }
+        :nth-child(7){
+            color: nth( $colores-letras, random( length( $colores-letras) ) );
+        }
+    }
+}
+
+.fondoDePaisaje{
+    background-image: url("../img/fondo.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+div{
+    .tabla{
+        div{
+            padding: 3rem 0px;
+            text-align: center;
+            background-color:#E8EBEA;
+            background-attachment: fixed;
+            background-size: 100%;
+            font-size: 2rem;
+            font-family: impact;
+            color: $cafe;
+            cursor: pointer;
+            width: 25%;
+            border: 1px solid $cafe;
+            opacity: 0.9;
+        }
+    }
+}
+.vacio{
+    background-color: transparent !important;
+    border:none !important;
+}
+
+div{
+    .mismovimientos{ 
+        border:6px solid $cafe;	
+        background-color: $marfil;
+        span{
+            font-weight: bold;
+            font-size: 25px;
+            color: $cafe;
+            float:left;
+        }
+    }
+}
+#nuevo{
+    background-color: $cafeclaro;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+}
+
