@@ -3,9 +3,7 @@ package com.dukescript.games.codermasters.puzzlelogic;
 //import net.java.html.json.ComputedProperty;
 import com.dukescript.games.codermasters.puzzlelogic.js.Dialogs;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 import net.java.html.json.Function;
 import net.java.html.json.Model;
@@ -86,10 +84,13 @@ final class DataModel {
         t.getFichas().clear();
         Collections.shuffle(arreglofichas);//se ordenan aleatoriamente
         t.getFichas().addAll(arreglofichas);
-        
-        //ArrayList<Integer> posiciones_tablero = (ArrayList<Integer>) Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
+        ArrayList<Integer> posiciones_tablero = new ArrayList<>();
+        for (int idx = 0; idx < (numeroFichas-1); idx++) {
+            posiciones_tablero.add(idx);
+        }
         
         //for en donde colocaremos las tablas de una forma aleatoria
+        t.getPosiciones_tablero().addAll(posiciones_tablero);
         //for (Integer entero : arreglofichas) {
 
             //if (document.getElementById("p" + j).getAttribute("class").indexOf("vacio") < 0) {
@@ -116,9 +117,15 @@ final class DataModel {
     @Function
     public static void nuevo(ConfiguracionJuego model) {
         generar(model);
+        model.setEsta_corriendo_el_tiempo(true);
         //Reiniciamos los movimientos
         model.setMovimientos(0);
         //document.getElementById( "movimientos" ).innerText = movimientos;
+    }
+    
+    @Function
+    public static void pausa(ConfiguracionJuego model) {
+        model.setEsta_corriendo_el_tiempo(!model.isEsta_corriendo_el_tiempo());
     }
 
     @ModelOperation
@@ -132,16 +139,14 @@ final class DataModel {
             } else {
                 model.setContador_segundos(++segundos);
             }
-            java.util.Timer timer = new java.util.Timer("Rotates a while");
+        }
+        java.util.Timer timer = new java.util.Timer("Soy el mapa soy el mapa soy el mapa soy el mapa");
             timer.schedule(new java.util.TimerTask() {
                 @Override
                 public void run() {
                     contarTiempo(model);
                 }
             }, 1000);
-        } else {
-
-        }
     } //TODO Ver si conviene más un runnable para no correrlo a mano
 
     private static ConfiguracionJuego ui;
@@ -153,7 +158,7 @@ final class DataModel {
         ui = new ConfiguracionJuego(0, 0, 0, false, "home", 4, 4, null);
         Models.toRaw(ui);
         Dialogs.registerBinding();
-        ui.applyBindings();
+        ui.applyBindings().contarTiempo();
         Dialogs.screenSize();
     }
 }
