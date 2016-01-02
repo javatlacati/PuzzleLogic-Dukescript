@@ -7,7 +7,7 @@ public class DataModelTest {
 
     @Test
     public void testUIModelWithoutUI() {
-        CntrlDashboard model = new CntrlDashboard(0, 0, 0, false, null);
+        ConfiguracionJuego model = new ConfiguracionJuego(0, 0, 0, false, null);
 
         assertEquals(0, model.getContador_minutos(), "probando obtener minutos");
         assertEquals(0, model.getContador_segundos(), "probando obtener segundos");

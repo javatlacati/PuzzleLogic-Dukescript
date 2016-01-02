@@ -8,6 +8,11 @@
         <link href="lib/ionic/css/ionic.css" rel="stylesheet">
         <link href="css/estilos.css" rel="stylesheet">
         <script src="js/controllers.js"></script>
+        <script type="text/javascript">
+            var audioElement = document.createElement('audio');
+            audioElement.setAttribute('src', 'snd/strike3ausencia.mp3');
+            audioElement.play();
+        </script>
     </head>
     <body data-bind="route: page" class="fondoDePaisaje">
 
@@ -67,7 +72,7 @@
                 <span style="float:left;">Mov:</span>
                 <span style="float:left;" id="movimientos" data-bind="text:movimientos;"></span>
 
-                <a href="#!" data-bind="click: nuevo();" style="float:right;" id="nuevo">Nuevo</a>
+                <a href="javascript: void(0)" data-bind="click: nuevo();" style="float:right;" id="nuevo">Nuevo</a>
                 <!--cronometro-->
                 <span style="float:right; margin-rigth:10px; padding-right:20px;">T:<span id="minutos" data-bind="text:contador_minutos;"></span>:<span id="segundos" data-bind="text:contador_segundos;"></span></span>
                 <div style="clear:both;"></div>
