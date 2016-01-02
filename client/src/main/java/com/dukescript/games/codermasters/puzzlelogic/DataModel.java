@@ -9,6 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 import net.java.html.json.Function;
 import net.java.html.json.Model;
+import net.java.html.json.ModelOperation;
 import net.java.html.json.Models;
 import net.java.html.json.Property;
 
@@ -86,7 +87,7 @@ final class DataModel {
         Collections.shuffle(arreglofichas);//se ordenan aleatoriamente
         t.getFichas().addAll(arreglofichas);
         
-        ArrayList<Integer> posiciones_tablero = (ArrayList<Integer>) Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
+        //ArrayList<Integer> posiciones_tablero = (ArrayList<Integer>) Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
         
         //for en donde colocaremos las tablas de una forma aleatoria
         //for (Integer entero : arreglofichas) {
@@ -114,14 +115,14 @@ final class DataModel {
 
     @Function
     public static void nuevo(ConfiguracionJuego model) {
-        //generar();
+        generar(model);
         //Reiniciamos los movimientos
         model.setMovimientos(0);
         //document.getElementById( "movimientos" ).innerText = movimientos;
     }
 
-    @Function
-    public static void contarTiempo(ConfiguracionJuego model) {
+    @ModelOperation
+    public static void contarTiempo(final ConfiguracionJuego model) {
         if (model.isEsta_corriendo_el_tiempo()) {
             int segundos = model.getContador_segundos();
             if (segundos == 59) {
@@ -131,6 +132,13 @@ final class DataModel {
             } else {
                 model.setContador_segundos(++segundos);
             }
+            java.util.Timer timer = new java.util.Timer("Rotates a while");
+            timer.schedule(new java.util.TimerTask() {
+                @Override
+                public void run() {
+                    contarTiempo(model);
+                }
+            }, 1000);
         } else {
 
         }
