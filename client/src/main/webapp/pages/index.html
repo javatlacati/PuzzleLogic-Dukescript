@@ -1,73 +1,133 @@
 <!DOCTYPE html>
-<html ng-app="proyecto">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title>Puzzle Logic</title>
+<html  ng-app="proyecto">
+    <head>
+        <title>Puzzle Logic</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <script src="js/app.js"></script>
+        <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+        <link href="css/estilos.css" rel="stylesheet">
+        <script src="js/controllers.js"></script>
+    </head>
+    <body data-bind="route: page" class="fondoDePaisaje"  ng-controller="CntrlDashboard">
 
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/estilos.css" rel="stylesheet">
-    <!-- ionic/angularjs js -->
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/routes.js"></script>
-    <script src="js/controllers.js"></script>
-    <script src="js/controllers/dashboard.js"></script>
-    
-  </head>
-  <body>
-      <!-- animation="slide-left-right-ios7" class="platform-android platform-cordova platform-webview" -->
-    <ion-nav-view> </ion-nav-view>
-    <script id="templates/tabs.html" type="text/ng-template">
-    <ion-view>
+        <div data-bind="template: { name: page }"></div>
 
-    <!-- abriendo el contenido-->
-    
-    <ion-content padding="true" class="fondoDePaisaje">
 
-        <!--logo-->
-        <div id="logo" style="text-align:center;">
-            <img src="img/logo_pusle.png" alt="Puzzle Land"
-                 width="300rem">
+        <script type="text/html" id="home">
 
-            <div id="botones_comienzo">
-                <a href="#/dashboard" class="opcion_menu">
-                    <span>J</span>
-                    <span>u</span>
-                    <span>g</span>
-                    <span>a</span>
-                    <span>r</span>
-                </a>
-                <br>
-                <br>
-                <a href="" class="opcion_menu">
-                    <span>S</span>
-                    <span>c</span>
-                    <span>o</span>
-                    <span>r</span>
-                    <span>e</span>
-                </a>
-                <br>
-                <br>
-                <a href="" class="opcion_menu">
-                    <span>A</span>
-                    <span>y</span>
-                    <span>u</span>
-                    <span>d</span>
-                    <span>a</span>
-                </a>
+            <a nav-direction="forward"  href="#/settings"><button class="button button-assertive icon ion-gear-a" style="float:right;"></button></a>
+            <br>
+            <br>
+            <!--logo-->
+            <div id="logo" style="text-align:center;">
+                <img src="img/logo_pusle.png" alt="Puzzle Land" width="300rem">
+
+                <div id="botones_comienzo">
+                    <a href="#/dashboard" class="opcion_menu">
+                        <span>J</span>
+                        <span>u</span>
+                        <span>g</span>
+                        <span>a</span>
+                        <span>r</span>
+                    </a>
+                    <br>
+                    <br>
+                    <a href="#/score" class="opcion_menu">
+                        <span>S</span>
+                        <span>c</span>
+                        <span>o</span>
+                        <span>r</span>
+                        <span>e</span>
+                    </a>
+                    <br>
+                    <br>
+                    <a href="" class="opcion_menu">
+                        <span>A</span>
+                        <span>y</span>
+                        <span>u</span>
+                        <span>d</span>
+                        <span>a</span>
+                    </a>
+                </div>
             </div>
-        </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <!--pie de pagina-->
+            <div class="row-center" style="background-color:transparent; text-align: center;">
+                <div>Derechos Reservados</div>
+            </div>
 
-    </ion-content>
+        </script>
+        <script type="text/html" id="dashboard">
+            <!--movimientos realizados-->
+            <div class="mismovimientos">
+                <span style="float:left;">Mov:</span>
+                <span style="float:left;" id="movimientos" data-bind="text:movimientos"></span>
 
-    <!--pie de pagina-->
-    <div class="bar bar-footer" style="background-color:transparent; left: 3rem">
-        <div>Derechos Reservados</div>
-    </div
+                <a href="" ng-click="nuevo()" style="float:right;" id="nuevo">Nuevo</a>
+                <!--cronometro-->
+                <span style="float:right; margin-rigth:10px; padding-right:20px;">T:<span id="minutos">0</span>:<span id="segundos">0</span></span>
+                <div style="clear:both;"></div>
+            </div>
 
+            <!--crearemos la tabla-->
+            <div class="row tabla" id="tabla1">
+                <div class="col" posicion="0" id="p1" ng-click="mensaje($event)">1</div>
+                <div class="col" posicion="1" id="p2" ng-click="mensaje($event)">2</div>
+                <div class="col" posicion="2" id="p3" ng-click="mensaje($event)">3</div>
+                <div class="col" posicion="3" id="p4" ng-click="mensaje($event)">4</div>
+            </div> 
+            <div class="row tabla" id="tabla2">
+                <div class="col" posicion="0" id="p5" ng-click="mensaje($event)">5</div>
+                <div class="col" posicion="1" id="p6" ng-click="mensaje($event)">6</div>
+                <div class="col" posicion="2" id="p7" ng-click="mensaje($event)">7</div>
+                <div class="col" posicion="3" id="p8" ng-click="mensaje($event)">8</div>
+            </div>
+            <div class="row tabla" id="tabla3">
+                <div class="col" posicion="0" id="p9" ng-click="mensaje($event)">9</div>
+                <div class="col" posicion="1" id="p10" ng-click="mensaje($event)">10</div>
+                <div class="col" posicion="2" id="p11" ng-click="mensaje($event)">11</div>
+                <div class="col" posicion="3" id="p12" ng-click="mensaje($event)">12</div>
+            </div>
+            <div class="row tabla" id="tabla4"> 
+                <div class="col" posicion="0" id="p13" ng-click="mensaje($event)">13</div>
+                <div class="col" posicion="1" id="p14" ng-click="mensaje($event)">14</div>
+                <div class="col" posicion="2" id="p15" ng-click="mensaje($event)">15</div>
+                <div class="col vacio" posicion="3" id="p16" ng-click="mensaje($event)"></div>
+            </div>  
 
-</ion-view>
-</script>
-  </body>
+            <!--volver-->
+            <div class="mismovimientos">
+                <span style="float:left; font-size:16px !important;">Derechos Reservados</span>
+                <a href="#/home" style="float:right;" id="nuevo">Volver</a>  
+                <div style="clear:both;"></div>
+            </div>
+        </script>
+        <script type="text/html" id="score">
+            <div class="row">
+                <h1 class="col">Mejor Tiempo:</h1>
+                <h2 class="col">???</h2>
+            </div>
+            <!--pie de pagina-->
+            <div class="mismovimientos">
+                <span style="float:left; font-size:16px !important;">Derechos Reservados</span>
+                <a href="#/home" style="float:right;" id="nuevo">Volver</a>  
+                <div style="clear:both;"></div>
+            </div>
+        </script>
+        <script type="text/html" id="settings">
+            <!--pie de pagina-->
+            <div class="mismovimientos">
+                <span style="float:left; font-size:16px !important;">Derechos Reservados</span>
+                <a href="#/home" style="float:right;" id="nuevo">Volver</a>  
+                <div style="clear:both;"></div>
+            </div>
+        </script>
+
+        <!-- ${browser.bootstrap} -->
+
+    </body>
 </html>
