@@ -9,7 +9,7 @@
         <link href="css/estilos.css" rel="stylesheet">
         <script src="js/controllers.js"></script>
     </head>
-    <body data-bind="route: page" class="fondoDePaisaje"  ng-controller="CntrlDashboard">
+    <body data-bind="route: page" class="fondoDePaisaje">
 
         <div data-bind="template: { name: page }"></div>
 
@@ -65,11 +65,11 @@
             <!--movimientos realizados-->
             <div class="mismovimientos">
                 <span style="float:left;">Mov:</span>
-                <span style="float:left;" id="movimientos" data-bind="text:movimientos"></span>
+                <span style="float:left;" id="movimientos" data-bind="text:movimientos;"></span>
 
-                <a href="" ng-click="nuevo()" style="float:right;" id="nuevo">Nuevo</a>
+                <a href="#!" data-bind="click: nuevo();" style="float:right;" id="nuevo">Nuevo</a>
                 <!--cronometro-->
-                <span style="float:right; margin-rigth:10px; padding-right:20px;">T:<span id="minutos">0</span>:<span id="segundos">0</span></span>
+                <span style="float:right; margin-rigth:10px; padding-right:20px;">T:<span id="minutos" data-bind="text:contador_minutos;"></span>:<span id="segundos" data-bind="text:contador_segundos;"></span></span>
                 <div style="clear:both;"></div>
             </div>
 
