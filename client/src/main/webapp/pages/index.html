@@ -11,6 +11,10 @@
         <script type="text/javascript">
             var audioElement = document.createElement('audio');
             audioElement.setAttribute('src', 'snd/strike3ausencia.mp3');
+            audioElement.addEventListener('ended', function() {
+            this.currentTime = 0;
+            this.play();
+            }, false);
             audioElement.play();
         </script>
     </head>
@@ -29,7 +33,7 @@
                 <img src="img/logo_pusle.png" alt="Puzzle Land" width="300rem">
 
                 <div id="botones_comienzo">
-                    <a href="#/dashboard" class="opcion_menu">
+                    <a href="#/dashboard" data-bind="click: nuevo()" class="opcion_menu">
                         <span>J</span>
                         <span>u</span>
                         <span>g</span>
@@ -78,7 +82,12 @@
                 <div style="clear:both;"></div>
             </div>
 
-            <!--crearemos la tabla-->
+            <div data-bind="foreach: filas">
+                <div class="row tabla"  id="tabla1" data-bind="foreach: columnas">
+                    <div class="col" posicion="0" id="p1" data-bind="foreach:Tablero"><p data-bind="text:posiciones_tablero"></p></div>
+                </div>
+            </div>
+            <!--crearemos la tabla
             <div class="row tabla" id="tabla1">
                 <div class="col" posicion="0" id="p1" ng-click="mensaje($event)">1</div>
                 <div class="col" posicion="1" id="p2" ng-click="mensaje($event)">2</div>
@@ -103,6 +112,7 @@
                 <div class="col" posicion="2" id="p15" ng-click="mensaje($event)">15</div>
                 <div class="col vacio" posicion="3" id="p16" ng-click="mensaje($event)"></div>
             </div>  
+            -->
 
             <!--volver-->
             <div class="mismovimientos">
