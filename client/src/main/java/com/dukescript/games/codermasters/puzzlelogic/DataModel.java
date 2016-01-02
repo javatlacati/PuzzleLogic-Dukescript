@@ -21,6 +21,7 @@ import net.java.html.json.Property;
     @Property(name = "arreglo_numeros", type = int.class, array = true)
 })
 final class DataModel {
+
     /*@ComputedProperty
     static boolean verificarGanarJuego() {
         return false;
@@ -29,10 +30,35 @@ final class DataModel {
      * Devuelve los contadores a cero.
      */
     @Function
-    static void reiniciaTiempo(CntrlDashboard model) {
+    public static void reiniciaTiempo(CntrlDashboard model) {
         model.setContador_minutos(0);
         model.setContador_segundos(0);
     }
+    
+    @Function
+    public static void nuevo(CntrlDashboard model) {
+        //generar();
+
+        //Reiniciamos los movimientos         
+        model.setMovimientos(0);
+        //document.getElementById( "movimientos" ).innerText = movimientos;
+    }
+
+    @Function
+    public static void contarTiempo(CntrlDashboard model) {
+        if (model.isEsta_corriendo_el_tiempo()) {
+            int segundos = model.getContador_segundos();
+            if (segundos == 59) {
+                int minutos = model.getContador_minutos();
+                model.setContador_minutos(++minutos);
+                model.setContador_segundos(0);
+            } else {
+                model.setContador_segundos(++segundos);
+            }
+        } else {
+
+        }
+    } //TODO Ver si conviene más un runnable para no correrlo a mano
 
     private static CntrlDashboard ui;
 
@@ -44,6 +70,6 @@ final class DataModel {
         Models.toRaw(ui);
         Dialogs.registerBinding();
         ui.applyBindings();
-        //Dialogs.screenSize();
+        Dialogs.screenSize();
     }
 }
