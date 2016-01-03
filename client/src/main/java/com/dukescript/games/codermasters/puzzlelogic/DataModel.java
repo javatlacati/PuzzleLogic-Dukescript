@@ -3,6 +3,7 @@ package com.dukescript.games.codermasters.puzzlelogic;
 
 import com.dukescript.games.codermasters.puzzlelogic.js.Dialogs;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import net.java.html.json.ComputedProperty;
@@ -51,18 +52,17 @@ final class DataModel {
         @Property(name = "columnas", type = Columna.class, array = true)
     })
     static class ModeloFila {
-
     }
     
  @Model(className = "Columna", targetId = "", properties = {
         @Property(name = "fichas", type = Ficha.class, array = true)
     })
     static class ModeloColumna {
-
     }
      
 
     @Model(className = "Ficha", targetId = "", properties = {
+        @Property(name = "clase",type = String.class),
         @Property(name = "NumeroLetraSimbolo", type = String.class, array = true)
     })
     static class ModeloFicha {
@@ -93,18 +93,43 @@ final class DataModel {
     public static void generar(ConfiguracionJuego model) {
         reiniciaTiempo(model);
         
-        List<Ficha> arreglofichas = new ArrayList<Ficha>();
+        
+        
         //agregar contenido de el tablero
       int numeroFichas=0;
-        for(int i=0 ; i<model.getFilas();i++){
-            for (int j = 0; j < model.getColumnas(); j++) {
-                arreglofichas.add(new Ficha(++numeroFichas+""));
-            }
-        }
-        
-        Tablero t = new Tablero();
+      int numeroDeFilas=model.getFilas();
+      int numeroDeColumnas=model.getColumnas();
+      int totalfichas=numeroDeFilas*numeroDeColumnas-1;
+      List<Ficha> arreglofichas = new ArrayList<>();
+      for(int index=0;index<totalfichas-1;index++){
+          arreglofichas.add(new Ficha("col ",index+""));
+      }
+      arreglofichas.add(new Ficha("col vacio", ""));
+      Collections.shuffle(arreglofichas);//se ordenan aleatoriamente
+      
+      List<Fila> arreglofilas = new ArrayList<Fila>();
+      //List<Columna> arreglocolumnasdelafila = new ArrayList<Columna>();
+      int fichaActual=0;
+      for(int i=0 ; i<numeroDeFilas;i++){
+      Fila filaColumnas = new Fila();
+          for (int j = 0; j < numeroDeColumnas; j++) {
+              Columna columnaDeFichas = new Columna();
+              //solo una ficha por columna
+              Ficha miFicha = arreglofichas.get(fichaActual);
+              fichaActual++;
+              columnaDeFichas.getFichas().add(miFicha);
+              
+                  filaColumnas.getColumnas().add(columnaDeFichas);
+              
+          }
+          
+                  arreglofilas.add(filaColumnas);
+              
+      }
+        Tablero tablero = new Tablero();
+        tablero.getFilas().addAll(arreglofilas);
 //        t.getFichas().clear();
-        Collections.shuffle(arreglofichas);//se ordenan aleatoriamente
+        
 //        t.getFichas().addAll(arreglofichas);
         ArrayList<Integer> posiciones_tablero = new ArrayList<>();
         for (int idx = 0; idx < (numeroFichas-1); idx++) {
@@ -112,7 +137,7 @@ final class DataModel {
         }
         
         //for en donde colocaremos las tablas de una forma aleatoria
-        t.getPosiciones_tablero().addAll(posiciones_tablero);
+        tablero.getPosiciones_tablero().addAll(posiciones_tablero);
         //for (Integer entero : arreglofichas) {
 
             //if (document.getElementById("p" + j).getAttribute("class").indexOf("vacio") < 0) {
@@ -120,7 +145,7 @@ final class DataModel {
             //}
         //}
         model.getTablero().clear();
-        model.getTablero().add(t);
+        model.getTablero().add(tablero);
     }
 
     /*@ComputedProperty
