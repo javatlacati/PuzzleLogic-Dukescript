@@ -8,14 +8,7 @@
         <link href="lib/ionic/css/ionic.css" rel="stylesheet">
         <link href="css/estilos.css" rel="stylesheet">
         <script src="js/controllers.js"></script>
-        <script type="text/javascript">
-            var audioElement = document.createElement('audio');
-            audioElement.setAttribute('src', 'snd/strike3ausencia.mp3');
-            audioElement.addEventListener('ended', function() {
-                this.currentTime = 0;
-                this.play();
-            }, false);
-            audioElement.play();
+        <script type="text/javascript" data-bind="text: audio">
         </script>
     </head>
     <body data-bind="route: page" class="fondoDePaisaje">
@@ -72,19 +65,24 @@
         </script>
         <script type="text/html" id="dashboard">
             <!--movimientos realizados-->
-            <div class="mismovimientos">
-                <span style="float:left;">Mov:</span>
-                <span style="float:left;" id="movimientos" data-bind="text:movimientos;"></span>
-
-                <a href="javascript: void(0)" data-bind="click: nuevo();" style="float:right;" id="nuevo">Nuevo</a>
+            <div class="mismovimientos row">
+                <div class="col">
+                    <span style="float:left;">Mov:</span>
+                    <span style="float:left;" id="movimientos" data-bind="text:movimientos;"></span>
+                </div>
                 <!--cronometro-->
-                <span style="float:right; margin-rigth:10px; padding-right:20px;">T:<span id="minutos" data-bind="text:contador_minutos;"></span>:<span id="segundos" data-bind="text:contador_segundos;"></span></span>
-                <div style="clear:both;"></div>
+                <div class="col">
+                    <a href="javascript: void(0)" data-bind="click: pausa()" style="float:right;" id="pausa"><i class="icon ion-pause"></i></a>
+                    <span style="float:right; margin-rigth:10px; padding-right:20px;">T:<span id="minutos" data-bind="text:contador_minutos;"></span>:<span id="segundos" data-bind="text:contador_segundos;"></span></span>
+                </div>
+                <div>
+                    <a href="javascript: void(0)" data-bind="click: nuevo();" style="float:right;" id="nuevo">Nuevo</a>
+                </div>
             </div>
 
             <div data-bind="foreach: filas">
                 <div class="row tabla"  id="tabla1" data-bind="foreach: columnas">
-                    <div class="col" posicion="0" id="p1" data-bind="foreach:Tablero"><p data-bind="text:posiciones_tablero"></p></div>
+                    <div class="col" posicion="0" id="p1" data-bind="foreach:fichas"><p data-bind="text:NumeroLetraSimbolo"></p></div>
                 </div>
             </div>
             <!--crearemos la tabla
@@ -117,12 +115,6 @@
             <!--volver-->
             <div class="mismovimientos">
                 <span style="float:left; font-size:16px !important;">Derechos Reservados</span>
-                <a href="" style="float:left; font-size:40px !important; margin-left: 5px; margin-right: 5px">
-                    <i class="icon ion-volume-mute"></i>
-                </a>
-                <a href="" style="float:left; font-size:40px !important; margin-left: 5px; margin-right: 5px">
-                    <i class="icon ion-pause"></i>
-                </a>
                 <a href="#/home" style="float:right;" id="nuevo">Volver</a>  
                 <div style="clear:both;"></div>
             </div>
@@ -130,12 +122,12 @@
         <script type="text/html" id="score">
             <div class="row">
                 <h1 class="col">Mejor Tiempo:</h1>
-                <h2 class="col">???</h2>
+                <h2 class="col" data-bind="text: jugador.mejorTiempo">???</h2>
             </div>
             <!--pie de pagina-->
             <div class="mismovimientos">
                 <span style="float:left; font-size:16px !important;">Derechos Reservados</span>
-               
+
                 <a href="#/home" style="float:right;" id="nuevo">Volver</a>  
                 <div style="clear:both;"></div>
             </div>
@@ -147,14 +139,17 @@
                         Configuraciones
                     </div>
                     <div class="item range range-positive">
-                       <i class="icon ion-volume-low"></i>
+                        <i class="icon ion-volume-low"></i>
                         <input type="range" name="volume" min="0" max="100" value="60">
                         <i class="icon ion-volume-high"></i>
+                        <a href="" style="float:left; font-size:40px !important; margin-left: 5px; margin-right: 5px">
+                            <i class="icon ion-volume-mute"></i>
+                        </a>
                     </div>
                     <div class="item item-toggle">
                         Tutorial
-                        <label class="toggle toggle-assertive">
-                            <input type="checkbox" name="tutorial">
+                        <label class="toggle toggle-possitive">
+                            <input type="checkbox" data-bind="checked: tutorial" name="tutorial">
                             <div class="track">
                                 <div class="handle"></div>
                             </div>
@@ -195,9 +190,12 @@
                 </div>
                 <div class="col HelpDerecha" id="ayuda">
                     <img src="img/tableroganar.png" width="200" height="300" />
-                    <button class="button button-positive">
-                        Jugar    
-                    </button>
+                    <a nav-direction="forward"  href="#/dashboard">
+                        <button class="button button-positive">
+                            Jugar    
+                        </button>
+                    </a>
+
                 </div>
             </div>
             <div class="mismovimientos">

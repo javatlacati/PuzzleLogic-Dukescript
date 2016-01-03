@@ -144,7 +144,7 @@ body{
 
 .fondoDePaisaje{
     background-image: url("../img/fondo.png");
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
     background-size: cover;
 }
 
@@ -175,18 +175,18 @@ div{
     .mismovimientos{ 
         border:6px solid $cafe;	
         background-color: $marfil;
-        span{
+        /*span{
             font-weight: bold;
             font-size: 25px;
             color: $cafe;
             float:left;
-        }
+           }
+        */
     }
 }
-#nuevo{
+#nuevo, #pausa{
     background-color: $cafeclaro;
     color: white;
     padding: 10px;
     text-decoration: none;
 }
-
