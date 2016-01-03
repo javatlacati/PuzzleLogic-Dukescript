@@ -26,7 +26,7 @@
                 <img src="img/logo_pusle.png" alt="Puzzle Land" width="300rem">
 
                 <div id="botones_comienzo">
-                    <a href="#/dashboard" data-bind="click: nuevo()" class="opcion_menu">
+                    <a href="#/dashboard" data-bind="click: pausa()" class="opcion_menu">
                         <span>J</span>
                         <span>u</span>
                         <span>g</span>
@@ -80,11 +80,13 @@
                 </div>
             </div>
 
-            <div data-bind="foreach: filas">
-                <div class="row tabla"  id="tabla1" data-bind="foreach: columnas">
-                    <div class="col" posicion="0" id="p1" data-bind="foreach:fichas"><p data-bind="text:NumeroLetraSimbolo"></p></div>
+            
+                <div class="row tabla"  id="tabla1" data-bind="foreach: filas().columnas">
+                    <div class="col" posicion="0" id="p1" data-bind="foreach:fichas">
+                        <p data-bind="text:NumeroLetraSimbolo"></p>
+                    </div>
                 </div>
-            </div>
+            
             <!--crearemos la tabla
             <div class="row tabla" id="tabla1">
                 <div class="col" posicion="0" id="p1" ng-click="mensaje($event)">1</div>
