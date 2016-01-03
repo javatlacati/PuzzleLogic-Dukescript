@@ -26,19 +26,35 @@ import net.java.html.json.Property;
     @Property(name = "page", type = String.class),
     @Property(name = "filas", type = int.class),
     @Property(name = "columnas", type = int.class),
+    @Property(name = "jugador", type = Usuario.class),
     @Property(name = "tablero", type = Tablero.class, array = true)
 })
 
 final class DataModel {
 
     @Model(className = "Tablero", targetId = "", properties = {
-        @Property(name = "fichas", type = Ficha.class, array = true),
+        @Property(name = "filas", type = Fila.class, array = true),
         @Property(name = "posiciones_tablero", type = int.class, array = true),
         @Property(name = "imagenDeFondo", type = String.class, array = true)
     })
     static class ModeloTablero {
 
     }
+
+ @Model(className = "Fila", targetId = "", properties = {
+        @Property(name = "columnas", type = Columna.class, array = true)
+    })
+    static class ModeloFila {
+
+    }
+    
+ @Model(className = "Columna", targetId = "", properties = {
+        @Property(name = "fichas", type = Ficha.class, array = true)
+    })
+    static class ModeloColumna {
+
+    }
+     
 
     @Model(className = "Ficha", targetId = "", properties = {
         @Property(name = "NumeroLetraSimbolo", type = String.class, array = true)
@@ -81,9 +97,9 @@ final class DataModel {
         }
         
         Tablero t = new Tablero();
-        t.getFichas().clear();
+//        t.getFichas().clear();
         Collections.shuffle(arreglofichas);//se ordenan aleatoriamente
-        t.getFichas().addAll(arreglofichas);
+//        t.getFichas().addAll(arreglofichas);
         ArrayList<Integer> posiciones_tablero = new ArrayList<>();
         for (int idx = 0; idx < (numeroFichas-1); idx++) {
             posiciones_tablero.add(idx);
@@ -155,6 +171,7 @@ final class DataModel {
      * Called when the page is ready.
      */
     static void onPageLoad() throws Exception {
+        //TODO cuando se administre la música desde eñ backen usar nativo RemoveListener para quitar el loop.
         ui = new ConfiguracionJuego(0, 0, 0, false, "home", 4, 4, null);
         Models.toRaw(ui);
         Dialogs.registerBinding();
