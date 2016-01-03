@@ -72,20 +72,25 @@
         </script>
         <script type="text/html" id="dashboard">
             <!--movimientos realizados-->
-            <div class="mismovimientos">
-                <span style="float:left;">Mov:</span>
-                <span style="float:left;" id="movimientos" data-bind="text:movimientos;"></span>
-
-                <a href="javascript: void(0)" data-bind="click: nuevo();" style="float:right;" id="nuevo">Nuevo</a>
+            <div class="mismovimientos row">
+                <div class="col">
+                    <span style="float:left;">Mov:</span>
+                    <span style="float:left;" id="movimientos" data-bind="text:movimientos;"></span>
+                </div>
                 <!--cronometro-->
-                <span style="float:right; margin-rigth:10px; padding-right:20px;">T:<span id="minutos" data-bind="text:contador_minutos;"></span>:<span id="segundos" data-bind="text:contador_segundos;"></span></span>
-                <div style="clear:both;"></div>
+                <div class="col">
+                    <a href="javascript: void(0)" data-bind="click: pausa()" style="float:right;" id="pausa">II</a>
+                    <span style="float:right; margin-rigth:10px; padding-right:20px;">T:<span id="minutos" data-bind="text:contador_minutos;"></span>:<span id="segundos" data-bind="text:contador_segundos;"></span></span>
+                </div>
+                <div>
+                    <a href="javascript: void(0)" data-bind="click: nuevo();" style="float:right;" id="nuevo">Nuevo</a>
+                </div>
             </div>
 
             <div data-bind="foreach: filas">
-                <div class="row tabla"  id="tabla1" data-bind="foreach: columnas">
-                    <div class="col" posicion="0" id="p1" data-bind="foreach:Tablero"><p data-bind="text:posiciones_tablero"></p></div>
-                </div>
+                 <div class="row tabla"  id="tabla1" data-bind="foreach: columnas">
+                     <div class="col" posicion="0" id="p1" data-bind="foreach:Tablero"><p data-bind="text:posiciones_tablero"></p></div>
+                 </div>
             </div>
             <!--crearemos la tabla
             <div class="row tabla" id="tabla1">
