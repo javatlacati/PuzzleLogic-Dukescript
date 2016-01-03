@@ -12,8 +12,8 @@
             var audioElement = document.createElement('audio');
             audioElement.setAttribute('src', 'snd/strike3ausencia.mp3');
             audioElement.addEventListener('ended', function() {
-            this.currentTime = 0;
-            this.play();
+                this.currentTime = 0;
+                this.play();
             }, false);
             audioElement.play();
         </script>
@@ -51,7 +51,7 @@
                     </a>
                     <br>
                     <br>
-                    <a href="" class="opcion_menu">
+                    <a href="#/help" class="opcion_menu">
                         <span>A</span>
                         <span>y</span>
                         <span>u</span>
@@ -117,6 +117,12 @@
             <!--volver-->
             <div class="mismovimientos">
                 <span style="float:left; font-size:16px !important;">Derechos Reservados</span>
+                <a href="" style="float:left; font-size:40px !important; margin-left: 5px; margin-right: 5px">
+                    <i class="icon ion-volume-mute"></i>
+                </a>
+                <a href="" style="float:left; font-size:40px !important; margin-left: 5px; margin-right: 5px">
+                    <i class="icon ion-pause"></i>
+                </a>
                 <a href="#/home" style="float:right;" id="nuevo">Volver</a>  
                 <div style="clear:both;"></div>
             </div>
@@ -129,11 +135,44 @@
             <!--pie de pagina-->
             <div class="mismovimientos">
                 <span style="float:left; font-size:16px !important;">Derechos Reservados</span>
+               
                 <a href="#/home" style="float:right;" id="nuevo">Volver</a>  
                 <div style="clear:both;"></div>
             </div>
         </script>
         <script type="text/html" id="settings">
+            <div class="config">
+                <div class="list">
+                    <div class="item item-divider">
+                        Configuraciones
+                    </div>
+                    <div class="item range range-positive">
+                       <i class="icon ion-volume-low"></i>
+                        <input type="range" name="volume" min="0" max="100" value="60">
+                        <i class="icon ion-volume-high"></i>
+                    </div>
+                    <div class="item item-toggle">
+                        Tutorial
+                        <label class="toggle toggle-assertive">
+                            <input type="checkbox" name="tutorial">
+                            <div class="track">
+                                <div class="handle"></div>
+                            </div>
+                        </label>
+                    </div>
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                            Color de la Ficha
+                        </div>
+                        <select name="color">
+                            <option value="1">Azul</option>
+                            <option value="2" selected>Beige</option>
+                            <option value="3">Rojo</option>
+                            <option value="4">Verde</option>
+                        </select>
+                    </label>    
+                </div>
+            </div>
             <!--pie de pagina-->
             <div class="mismovimientos">
                 <span style="float:left; font-size:16px !important;">Derechos Reservados</span>
@@ -141,8 +180,32 @@
                 <div style="clear:both;"></div>
             </div>
         </script>
-
+        <script type="text/html" id="help">
+            <h1 class="estiloLetra"> Instrucciones  del Juego</h1>
+            <hr />
+            <div class="row responsive-md">
+                <div class="col HelpIzquierda" id="ayuda">
+                    <h2 class="estiloLetra">!Hola! Bienevenido Puzzle Logic</h2>
+                    <ul>
+                        <li> <i class="icon ion-checkmark-circled"></i> Las piezas se mueven pulsando sobre ellas</li>
+                        <li> <i class="icon ion-checkmark-circled"></i> Las piezas se moveran al lugar vacio </li>
+                        <li> <i class="icon ion-checkmark-circled"></i> Debes ordernar las fichas del juego según el nivel, de manera tal que las fichas queden en orden consecutivo </li>
+                    </ul>
+                    <h3 class="estiloLetra">!Buena Suerte¡</h3>
+                </div>
+                <div class="col HelpDerecha" id="ayuda">
+                    <img src="img/tableroganar.png" width="200" height="300" />
+                    <button class="button button-positive">
+                        Jugar    
+                    </button>
+                </div>
+            </div>
+            <div class="mismovimientos">
+                <span style="float:left; font-size:16px !important;">Derechos Reservados</span>
+                <a href="#/home" style="float:right;" id="nuevo">Volver</a>  
+                <div style="clear:both;"></div>
+            </div>
+        </script>
         <!-- ${browser.bootstrap} -->
-
     </body>
 </html>
