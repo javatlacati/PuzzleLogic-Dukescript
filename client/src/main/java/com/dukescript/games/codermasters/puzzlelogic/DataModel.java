@@ -1,10 +1,11 @@
 package com.dukescript.games.codermasters.puzzlelogic;
 
-//import net.java.html.json.ComputedProperty;
+
 import com.dukescript.games.codermasters.puzzlelogic.js.Dialogs;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import net.java.html.json.ComputedProperty;
 import net.java.html.json.Function;
 import net.java.html.json.Model;
 import net.java.html.json.ModelOperation;
@@ -26,7 +27,12 @@ import net.java.html.json.Property;
     @Property(name = "page", type = String.class),
     @Property(name = "filas", type = int.class),
     @Property(name = "columnas", type = int.class),
+    @Property(name = "tutorial", type = boolean.class),
+    @Property(name = "colorGUI", type = int.class),
     @Property(name = "jugador", type = Usuario.class),
+    @Property(name = "silencio", type = boolean.class),
+    @Property(name="audio",type = String.class),
+    @Property(name="rutaaudio",type = String.class),
     @Property(name = "tablero", type = Tablero.class, array = true)
 })
 
@@ -165,6 +171,8 @@ final class DataModel {
             }, 1000);
     } //TODO Ver si conviene más un runnable para no correrlo a mano
 
+    
+    
     private static ConfiguracionJuego ui;
 
     /**
@@ -172,10 +180,14 @@ final class DataModel {
      */
     static void onPageLoad() throws Exception {
         //TODO cuando se administre la música desde eñ backen usar nativo RemoveListener para quitar el loop.
-        ui = new ConfiguracionJuego(0, 0, 0, false, "home", 4, 4, null);
+        Usuario usuario = new Usuario("tontonymous", "9:99:99", "99999", "-1");
+        ui = new ConfiguracionJuego(0, 0, 0, false, "home", 4, 4, true,0,
+                usuario,false,"","snd/strike3ausencia.mp3");
+        
         Models.toRaw(ui);
         Dialogs.registerBinding();
         ui.applyBindings().contarTiempo();
-        Dialogs.screenSize();
+        //Dialogs.screenSize();
+        ui.setAudio(Dialogs.configuraAudio(ui.getRutaaudio()));
     }
 }
