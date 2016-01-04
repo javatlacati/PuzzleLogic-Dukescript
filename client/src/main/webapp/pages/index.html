@@ -185,19 +185,20 @@
             <div class="row responsive-md">
                 <div class="col HelpIzquierda" id="ayuda">
                     <h2 class="estiloLetra">!Hola! Bienevenido Puzzle Logic</h2>
-                    <ul>
-                        <li> <i class="icon ion-checkmark-circled"></i> Las piezas se mueven pulsando sobre ellas</li>
-                        <li> <i class="icon ion-checkmark-circled"></i> Las piezas se moveran al lugar vacio </li>
-                        <li> <i class="icon ion-checkmark-circled"></i> Debes ordernar las fichas del juego según el nivel, de manera tal que las fichas queden en orden consecutivo </li>
-                    </ul>
-                    <h3 class="estiloLetra">!Buena Suerte¡</h3>
+                    <div class="containerAyuda">
+                        <ul>
+                            <li> <i class="icon ion-checkmark-circled verde"></i> Las piezas se mueven pulsando sobre ellas</li>
+                            <li> <i class="icon ion-checkmark-circled verde"></i> Las piezas se moveran al lugar vacio </li>
+                            <li> <i class="icon ion-checkmark-circled verde"></i> Debes ordernar las fichas del juego según el nivel, de manera tal que las fichas queden en orden consecutivo </li>
+                        </ul>
+                        <h3 class="estiloLetra">!Buena Suerte¡</h3>
+                    </div>
                 </div>
                 <div class="col HelpDerecha" id="ayuda">
                     <img src="img/tableroganar.png" width="200" height="300" />
-                    <a nav-direction="forward"  href="#/dashboard">
-                        <button class="button button-positive">
-                            Jugar    
-                        </button>
+                    
+                    <a nav-direction="forward"  href="#/dashboard" data-bind="click: pausa()" class="button button-positive">
+                        Jugar
                     </a>
 
                 </div>
