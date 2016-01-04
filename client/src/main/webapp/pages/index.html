@@ -80,13 +80,15 @@
                 </div>
             </div>
 
-            
-                <div class="row tabla"  id="tabla1" data-bind="foreach: filas().columnas">
-                    <div class="col" posicion="0" id="p1" data-bind="foreach:fichas">
-                        <p data-bind="text:NumeroLetraSimbolo"></p>
+
+            <div class="row tabla"  id="tabla1" data-bind="foreach: filas">
+                <div data-bind="foreach: columnas">
+                    <div class="col" posicion="0" id="p1" data-bind="foreach:$parent.fichas">
+                        <p data-bind="text:$parent.NumeroLetraSimbolo"></p>
                     </div>
                 </div>
-            
+            </div>
+
             <!--crearemos la tabla
             <div class="row tabla" id="tabla1">
                 <div class="col" posicion="0" id="p1" ng-click="mensaje($event)">1</div>
