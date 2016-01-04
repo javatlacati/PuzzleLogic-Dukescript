@@ -8,6 +8,7 @@ import net.java.html.js.JavaScriptResource;
  * JavaScript. See
  * http://bits.netbeans.org/html+java/1.2/net/java/html/js/package-summary.html
  * to understand how.
+ *
  * @author javatlacati, monacotoni
  */
 @JavaScriptResource(value = "registerRouter.js")
@@ -33,6 +34,7 @@ public final class Dialogs {
 
     /**
      * Adjusts document to screen size.
+     *
      * @return Size of the screen
      */
     @JavaScriptBody(
@@ -48,8 +50,21 @@ public final class Dialogs {
     )
     public static native String screenSize();
 
+    @JavaScriptBody(
+            args = {"rutaMusica"}, body
+            = " var audioElement = document.createElement('audio');\n"
+            + "            audioElement.setAttribute('src',rutaMusica);\n"
+            + "            audioElement.addEventListener('ended', function() {\n"
+            + "            this.currentTime = 0;\n"
+            + "            this.play();\n"
+            + "            }, false);\n"
+            + "            audioElement.play();"
+    )
+    public static native String configuraAudio(String rutaMusica);
+
     /**
      * This method registers the bindings.
+     *
      * @return ??
      */
     @JavaScriptBody(
