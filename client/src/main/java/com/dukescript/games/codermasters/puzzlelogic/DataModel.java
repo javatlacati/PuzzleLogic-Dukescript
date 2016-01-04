@@ -101,8 +101,8 @@ final class DataModel {
       int numeroDeColumnas=model.getColumnas();
       int totalfichas=numeroDeFilas*numeroDeColumnas-1;
       List<Ficha> arreglofichas = new ArrayList<>();
-      for(int index=0;index<totalfichas-1;index++){
-          arreglofichas.add(new Ficha("col ",index+""));
+      for(int index=0;index<totalfichas;index++){
+          arreglofichas.add(new Ficha("col ",(index+1)+""));
       }
       arreglofichas.add(new Ficha("col vacio", ""));
       Collections.shuffle(arreglofichas);//se ordenan aleatoriamente
@@ -146,6 +146,7 @@ final class DataModel {
         //}
         model.getTablero().clear();
         model.getTablero().add(tablero);
+        System.out.println(tablero);
     }
 
     /*@ComputedProperty
