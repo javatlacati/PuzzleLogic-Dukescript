@@ -10,6 +10,8 @@ $verde_pasto:#35B548;
 $moradouva:#8E288D;
 $cafeclaro:#C38049;
 $marfil:#F9F2EC;
+$verdeAyuda: #30F420;
+$sombra: #333;
 $amarillo:#eaea00;//colores para las letras
 $colores-letras: (
 $rosita,
@@ -189,4 +191,16 @@ div{
     color: white;
     padding: 10px;
     text-decoration: none;
+}
+.verde{
+    font-size: 30px;
+    color: $verdeAyuda;
+
+}
+.containerAyuda{
+    height: auto;
+    width: auto;
+    border: 1px solid $verde_pasto;
+    border-radius: 20px;
+    box-shadow: 0px 0px 5px $sombra;
 }
