@@ -3,10 +3,8 @@ package com.dukescript.games.codermasters.puzzlelogic;
 
 import com.dukescript.games.codermasters.puzzlelogic.js.Dialogs;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import net.java.html.json.ComputedProperty;
 import net.java.html.json.Function;
 import net.java.html.json.Model;
 import net.java.html.json.ModelOperation;
@@ -147,6 +145,7 @@ final class DataModel {
         model.getTablero().clear();
         model.getTablero().add(tablero);
         System.out.println(tablero);
+       // JQuery.displayResultsAsTable("board",tablero.toString());
     }
 
     /*@ComputedProperty
@@ -213,7 +212,7 @@ final class DataModel {
         Models.toRaw(ui);
         Dialogs.registerBinding();
         ui.applyBindings().contarTiempo();
-        //Dialogs.screenSize();
+        Dialogs.screenSize();
         ui.setAudio(Dialogs.configuraAudio(ui.getRutaaudio()));
     }
 }

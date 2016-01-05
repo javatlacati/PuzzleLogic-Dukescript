@@ -1,5 +1,4 @@
-var app;
-app = angular.module('proyecto', ['ionic', 'app.controllers'])
+var app = angular.module('proyecto', ['ionic', 'app.controllers'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
