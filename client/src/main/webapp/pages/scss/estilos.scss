@@ -12,7 +12,9 @@ $cafeclaro:#C38049;
 $marfil:#F9F2EC;
 $verdeAyuda: #30F420;
 $sombra: #333;
-$amarillo:#eaea00;//colores para las letras
+$amarillo:#eaea00;
+
+////// Colores para las letras del menú /////////
 $colores-letras: (
 $rosita,
 $naranja,
@@ -145,10 +147,25 @@ body{
 }
 
 .fondoDePaisaje{
-    background-image: url("../img/fondo.png");
-    background-repeat: repeat-y;
-    background-size: cover;
+    background-image: url("../img/fondo.png");   
+    //background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    //background-size: cover;
+    background-size: 100% 100%;
+    background-color: #464646;
 }
+/*
+@media only screen and (max-width: 767px) {
+    .fondoDePaisaje {
+        background-image: url("../img/fondo1920.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-color: #464646;
+    }
+}*/
 
 div{
     .tabla{

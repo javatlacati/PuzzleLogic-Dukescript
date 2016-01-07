@@ -7,12 +7,10 @@
         <link href="lib/ionic/css/ionic.css" rel="stylesheet">
         <link href="css/estilos.css" rel="stylesheet">
     </head>
-    <body data-bind="route: page" class="fondoDePaisaje">
-        <script type="text/javascript" data-bind="text: audio">
-        </script>
+    <body class="fondoDePaisaje" data-bind="route: page">
+        <audio id="musicadefondo"></audio>
 
         <div data-bind="template: { name: page }"></div>
-
 
         <script type="text/html" id="home">
 
@@ -89,15 +87,6 @@
                     </div>
                 </div>
             </div>
-
-
-            <!-- <div class="row tabla"  id="tabla1" data-bind="foreach: filas">
-                <div data-bind="foreach: columnas">
-                    <div class="col" posicion="0" id="p1" data-bind="foreach:$parent.fichas">
-                        <p data-bind="text:$parent.NumeroLetraSimbolo"></p>
-                    </div>
-                </div>
-            </div> -->
 
             <!--crearemos la tabla
             <div class="row tabla" id="tabla1">
@@ -180,6 +169,9 @@
                             <option value="4">Verde</option>
                         </select>
                     </label>    
+                    <div>
+                        M&aacute;sica de fondo: <input type="file" name="sndfile" >
+                    </div>
                 </div>
             </div>
             <!--pie de pagina-->

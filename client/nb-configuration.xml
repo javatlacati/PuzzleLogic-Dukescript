@@ -18,8 +18,15 @@
         <org-netbeans-modules-css-prep.sass_2e_enabled>true</org-netbeans-modules-css-prep.sass_2e_enabled>
         <org-netbeans-modules-css-prep.sass_2e_mappings>/pages/scss:/pages/css</org-netbeans-modules-css-prep.sass_2e_mappings>
         <org-netbeans-modules-css-prep.sass_2e_compiler_2e_options>--style compressed</org-netbeans-modules-css-prep.sass_2e_compiler_2e_options>
+        <org-netbeans-modules-web-clientproject-api.js_2e_libs_2e_folder>js/libs</org-netbeans-modules-web-clientproject-api.js_2e_libs_2e_folder>
+        <org-netbeans-modules-javascript2-requirejs.enabled>true</org-netbeans-modules-javascript2-requirejs.enabled>
+        <netbeans.checkstyle.format>true</netbeans.checkstyle.format>
+        <de-markiewb-netbeans-plugins-eclipse-formatter.preserveBreakPoints>true</de-markiewb-netbeans-plugins-eclipse-formatter.preserveBreakPoints>
+        <de-markiewb-netbeans-plugins-eclipse-formatter.eclipseFormatterActiveProfile/>
+        <de-markiewb-netbeans-plugins-eclipse-formatter.eclipseFormatterLocation/>
+        <de-markiewb-netbeans-plugins-eclipse-formatter.showNotifications>true</de-markiewb-netbeans-plugins-eclipse-formatter.showNotifications>
+        <de-markiewb-netbeans-plugins-eclipse-formatter.eclipseFormatterEnabled>false</de-markiewb-netbeans-plugins-eclipse-formatter.eclipseFormatterEnabled>
+        <de-markiewb-netbeans-plugins-eclipse-formatter.enableFormatAsSaveAction>false</de-markiewb-netbeans-plugins-eclipse-formatter.enableFormatAsSaveAction>
+        <de-markiewb-netbeans-plugins-eclipse-formatter.useProjectSettings>false</de-markiewb-netbeans-plugins-eclipse-formatter.useProjectSettings>
     </properties>
-    <formeditor xmlns="http://controlsjs.com/netbeans/tools/formeditor/">
-        <formeditor_sourcefilter>"custom;system;wineight%20skin;"</formeditor_sourcefilter>
-    </formeditor>
 </project-shared-configuration>

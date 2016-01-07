@@ -8,8 +8,7 @@ public class DataModelTest {
     @Test
     public void testUIModelWithoutUI() {
         Usuario usuario = new Usuario("tontonymous", "9:99:99", "99999", "-1");
-        ConfiguracionJuego model = new ConfiguracionJuego(0, 0, 0, false, "home", 4, 4, true, 0,
-                usuario, false, "", "snd/strike3ausencia.mp3");
+        ConfiguracionJuego model = new ConfiguracionJuego(0, 0, 0, false, "home", 4, 4, true, 0, usuario, false, "", "snd/strike3ausencia.mp3", new Tablero());
 
         assertEquals(0, model.getContador_minutos(), "probando obtener minutos");
         assertEquals(0, model.getContador_segundos(), "probando obtener segundos");
