@@ -7,7 +7,7 @@
         <link href="lib/ionic/css/ionic.css" rel="stylesheet">
         <link href="css/estilos.css" rel="stylesheet">
     </head>
-    <body class="fondoDePaisaje" data-bind="route: page">
+    <body class="fondoDePaisaje" data-bind="route: page, style:{backgroundImage: 'url(\"../img/fondo.png\")'}">
         <audio id="musicadefondo"></audio>
 
         <div data-bind="template: { name: page }"></div>
@@ -187,7 +187,7 @@
             <hr />
             <div class="row responsive-md">
                 <div class="col HelpIzquierda" id="ayuda">
-                    <h2 class="estiloLetra">!Hola! Bienevenido Puzzle Logic</h2>
+                    <h2 class="estiloLetra">¡Hola! Bienevenido Puzzle Logic</h2>
                     <div class="containerAyuda">
                         <ul>
                             <li> <i class="icon ion-checkmark-circled verde"></i> Las piezas se mueven pulsando sobre ellas</li>
