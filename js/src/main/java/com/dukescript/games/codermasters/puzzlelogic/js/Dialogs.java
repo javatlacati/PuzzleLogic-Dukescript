@@ -52,15 +52,23 @@ public final class Dialogs {
 
     @JavaScriptBody(
             args = {"rutaMusica"}, body
-            = " var audioElement = document.createElement('audio');\n"
+            = "var audioElement = document.getElementById('musicadefondo');" //" var audioElement = document.createElement('audio');\n"
             + "            audioElement.setAttribute('src',rutaMusica);\n"
+    )
+    public static native String configuraAudio(String rutaMusica);
+
+    @JavaScriptBody(
+            args = {},
+            body = "var audioElement = document.getElementById('musicadefondo');"
+            + "if (audioElement !== null){ " //TODO tal vez salga sobrando este if
             + "            audioElement.addEventListener('ended', function() {\n"
             + "            this.currentTime = 0;\n"
             + "            this.play();\n"
             + "            }, false);\n"
             + "            audioElement.play();"
+            + "}"
     )
-    public static native String configuraAudio(String rutaMusica);
+    public static native String reproducirAudio();
 
     /**
      * This method registers the bindings.

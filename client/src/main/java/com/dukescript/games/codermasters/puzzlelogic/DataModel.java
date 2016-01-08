@@ -272,5 +272,6 @@ final class DataModel {
         ui.applyBindings().contarTiempo();
         //Dialogs.screenSize();
         ui.setAudio(Dialogs.configuraAudio(ui.getRutaaudio()));
+        Dialogs.reproducirAudio();
     }
 }
