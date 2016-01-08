@@ -191,8 +191,19 @@ div{
 }
 
 div{
-    .mismovimientos{ 
+    .mismovimientoscafe{ 
         border:6px solid $cafe;	
+        background-color: $marfil;
+        /*span{
+            font-weight: bold;
+            font-size: 25px;
+            color: $cafe;
+            float:left;
+           }
+        */
+    }
+    .mismovimientosazul{ 
+        border:6px solid $turquesa;	
         background-color: $marfil;
         /*span{
             font-weight: bold;

@@ -5,6 +5,7 @@ import com.dukescript.games.codermasters.puzzlelogic.js.Dialogs;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import net.java.html.json.ComputedProperty;
 import net.java.html.json.Function;
 import net.java.html.json.Model;
 import net.java.html.json.ModelOperation;
@@ -32,6 +33,7 @@ import net.java.html.json.Property;
     @Property(name = "silencio", type = boolean.class),
     @Property(name="audio",type = String.class),
     @Property(name="rutaaudio",type = String.class),
+    @Property(name = "miGUI", type = IGU.class),
     @Property(name = "tablero", type = Tablero.class)
 })
 
@@ -78,13 +80,29 @@ final class DataModel {
     }
     
     @Model(className = "IGU", targetId = "", properties = {
-        @Property(name = "color1", type = String.class),
-        @Property(name = "color2", type = String.class),
-        @Property(name = "color3", type = String.class),
-        @Property(name = "color4", type = String.class)
+        @Property(name = "claseMisMovimientos", type = String.class)
     })
     static class ModeloIGU {
 
+    }
+    
+    @Function
+    public static void poncssMisMovimientos(ConfiguracionJuego model) {
+        int esquemaDeColores=model.getColorGUI();
+        String micolor;
+        switch(esquemaDeColores){
+        case 1: 
+                micolor="mismovimientosazul";
+                break;
+                default:
+                    micolor="mismovimientoscafe";
+                    break;
+        }
+        
+        
+        model.getMiGUI().setClaseMisMovimientos(micolor);
+        //model.getMiGUI().setColorFondo(obtenColorMarfil());//background-color: 
+        System.out.println("model.getMiGUI():"+model.getMiGUI());
     }
 
     @Function
@@ -146,6 +164,7 @@ final class DataModel {
         model.setTablero(tablero);
         System.out.println(tablero);
        // JQuery.displayResultsAsTable("board",tablero.toString());
+       System.out.println("Modelo completo:"+model);
     }
 
     /*@ComputedProperty
@@ -206,12 +225,55 @@ final class DataModel {
     static void onPageLoad() throws Exception {
         //TODO cuando se administre la música desde eñ backen usar nativo RemoveListener para quitar el loop.
         Usuario usuario = new Usuario("tontonymous", "9:99:99", "99999", "-1");
-        ui= new ConfiguracionJuego(0, 0, 0, false, "home", 4, 4, true, 0, usuario, false, "", "snd/strike3ausencia.mp3", new Tablero());
         
+        ui= new ConfiguracionJuego(
+                0, //movimientos
+                0, //segundos
+                0, //minutos
+                false, //corretiempo
+                "home", //página actual
+                4, //filas tablero
+                4, //columnas tablero
+                true, //tutorial
+                1, //color interfaz
+                usuario, //datos de usuario
+                false, // silencio
+                "", // audio
+                "snd/strike3ausencia.mp3", //ruta del audio
+                new IGU(),//interfaz gráfica
+                new Tablero() //tablero
+        );
+        poncssMisMovimientos(ui);
         Models.toRaw(ui);
         Dialogs.registerBinding();
         ui.applyBindings().contarTiempo();
         //Dialogs.screenSize();
         ui.setAudio(Dialogs.configuraAudio(ui.getRutaaudio()));
+    }
+    
+    ////////////// Funciones utilitarias para obytener los colores ////////////
+    @ComputedProperty
+    public static String obtenColorCafe(){
+        return "#926037";
+    }
+    
+    @ComputedProperty
+    public static String obtenColorRosita(){
+        return "#ED008C";
+    }
+    
+    @ComputedProperty
+    public static String obtenColorNaranja(){
+        return "#EB5731";
+    }
+    
+    @ComputedProperty
+    public static String obtenColorTurquesa(){
+        return "#24AAE1";
+    }
+    
+    @ComputedProperty
+    public static String obtenColorMarfil(){
+        return "#F9F2EC";
     }
 }

@@ -61,7 +61,8 @@
         </script>
         <script type="text/html" id="dashboard">
             <!--movimientos realizados-->
-            <div class="mismovimientos row">
+            <div class="row" data-bind="css:miGUI().claseMisMovimientos">
+            <!-- <div class="row" data-bind="style: {'background-color': miGUI().getColorFondo, 'border-size':'6px', 'border-style': 'solid', 'border-color': miGUI().getColorBorde}"> -->
                 <div class="col">
                     <span style="float:left;">Mov:</span>
                     <span style="float:left;" id="movimientos" data-bind="text:movimientos;"></span>
@@ -116,7 +117,7 @@
             -->
 
             <!--volver-->
-            <div class="mismovimientos">
+            <div data-bind="css:miGUI().claseMisMovimientos">
                 <span style="float:left; font-size:16px !important;">Derechos Reservados</span>
                 <a href="#/home" style="float:right;" id="nuevo">Volver</a>  
                 <div style="clear:both;"></div>
@@ -128,7 +129,7 @@
                 <h2 class="col" data-bind="text: jugador().mejorTiempo">???</h2>
             </div>
             <!--pie de pagina-->
-            <div class="mismovimientos">
+            <div data-bind="css:miGUI().claseMisMovimientos">
                 <span style="float:left; font-size:16px !important;">Derechos Reservados</span>
 
                 <a href="#/home" style="float:right;" id="nuevo">Volver</a>  
@@ -162,7 +163,7 @@
                         <div class="input-label">
                             Color de la Ficha
                         </div>
-                        <select name="color">
+                        <select name="color" data-bind="value:colorGUI">
                             <option value="1">Azul</option>
                             <option value="2" selected>Beige</option>
                             <option value="3">Rojo</option>
@@ -175,9 +176,9 @@
                 </div>
             </div>
             <!--pie de pagina-->
-            <div class="mismovimientos">
+            <div data-bind="css:miGUI().claseMisMovimientos">
                 <span style="float:left; font-size:16px !important;">Derechos Reservados</span>
-                <a href="#/home" style="float:right;" id="nuevo">Volver</a>  
+                <a href="#/home" style="float:right;" id="nuevo" data-bind="click:poncssMisMovimientos()">Volver</a>  
                 <div style="clear:both;"></div>
             </div>
         </script>
@@ -205,7 +206,7 @@
 
                 </div>
             </div>
-            <div class="mismovimientos">
+            <div data-bind="css:miGUI().claseMisMovimientos">
                 <span style="float:left; font-size:16px !important;">Derechos Reservados</span>
                 <a href="#/home" style="float:right;" id="nuevo">Volver</a>  
                 <div style="clear:both;"></div>
