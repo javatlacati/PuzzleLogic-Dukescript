@@ -19,29 +19,43 @@ import net.java.html.json.Property;
 @Model(className = "ConfiguracionJuego", targetId = "", properties = {
     /** Número de movimientos realizados por el jugador. */
     @Property(name = "movimientos", type = int.class),
-    /***/
+    /**Segundos transcurridos en la partida actual.*/
     @Property(name = "contador_segundos", type = int.class),
-    /***/
+    /**Minutos transcurridos en la partida actual.*/
     @Property(name = "contador_minutos", type = int.class),
+    /**Bandera que nos indica si el tiempo transcurre o no.*/
     @Property(name = "esta_corriendo_el_tiempo", type = boolean.class),
+    /**Página actual que se está mostrando.*/
     @Property(name = "page", type = String.class),
+    /**Tamaño en filas del tablero.*/
     @Property(name = "filas", type = int.class),
+    /**Tamaño en columnas del tablero.*/
     @Property(name = "columnas", type = int.class),
+    /**Bandera que nos indica si se debe ejecutar el tutorial*/
     @Property(name = "tutorial", type = boolean.class),
+    /**Combinación de colores seleccionada para la interfaz gráfica.*/
     @Property(name = "colorGUI", type = int.class),
+    /**Información del jugador.*/
     @Property(name = "jugador", type = Usuario.class),
+    /**Bandera que nos indica si se debe o no reproducir la música defondo. */
     @Property(name = "silencio", type = boolean.class),
     @Property(name="audio",type = String.class),
+    /**ruta donde se encuentra la música de fondo.*/
     @Property(name="rutaaudio",type = String.class),
+    /**Configuración de la interfaz gráfica.*/
     @Property(name = "miGUI", type = IGU.class),
+    /**Tablero de juego actual*/
     @Property(name = "tablero", type = Tablero.class)
 })
 
 final class DataModel {
 
+    /**Tablero de juego*/
     @Model(className = "Tablero", targetId = "", properties = {
+        /**Arreglo con las filas del tablero.*/
         @Property(name = "filas", type = Fila.class, array = true),
         @Property(name = "posiciones_tablero", type = int.class, array = true),
+        /**Imágen de fondo que debe aparecer en el tablero.*/
         @Property(name = "imagenDeFondo", type = String.class, array = true)
     })
     static class ModeloTablero {
@@ -49,12 +63,14 @@ final class DataModel {
     }
 
  @Model(className = "Fila", targetId = "", properties = {
+     /**Columnas que contiene.*/
         @Property(name = "columnas", type = Columna.class, array = true)
     })
     static class ModeloFila {
     }
     
  @Model(className = "Columna", targetId = "", properties = {
+     /**Fichas que contiene.*/
         @Property(name = "fichas", type = Ficha.class, array = true)
     })
     static class ModeloColumna {
@@ -63,6 +79,7 @@ final class DataModel {
 
     @Model(className = "Ficha", targetId = "", properties = {
         @Property(name = "clase",type = String.class),
+        /**Símbolo que debe de mostrarse encima de la ficha.*/
         @Property(name = "NumeroLetraSimbolo", type = String.class, array = true)
     })
     static class ModeloFicha {
@@ -70,9 +87,13 @@ final class DataModel {
     }
 
     @Model(className = "Usuario", targetId = "", properties = {
+        /**id de usuario equivalente al id de facebook*/
         @Property(name = "facebookid", type = String.class),
+        /**Mejor tiempo del usuario registrado*/
         @Property(name = "mejorTiempo", type = String.class),
+        /**Menos movimientos del usuario registrado*/
         @Property(name = "menosMovimientos", type = String.class),
+        /**Mejor puntuación del usuario registrado.*/
         @Property(name = "mejorPuntuacion", type = String.class)
     })
     static class ModeloUsuario {
@@ -80,7 +101,8 @@ final class DataModel {
     }
     
     @Model(className = "IGU", targetId = "", properties = {
-        @Property(name = "claseMisMovimientos", type = String.class)
+        @Property(name = "claseMisMovimientos", type = String.class),
+        @Property(name = "rutaFondoApp", type = String.class)
     })
     static class ModeloIGU {
 
@@ -225,7 +247,8 @@ final class DataModel {
     static void onPageLoad() throws Exception {
         //TODO cuando se administre la música desde eñ backen usar nativo RemoveListener para quitar el loop.
         Usuario usuario = new Usuario("tontonymous", "9:99:99", "99999", "-1");
-        
+        IGU configuracionDeInterfazGrafica = new IGU();
+        configuracionDeInterfazGrafica.setRutaFondoApp("../img/fondo.png");
         ui= new ConfiguracionJuego(
                 0, //movimientos
                 0, //segundos
@@ -240,7 +263,7 @@ final class DataModel {
                 false, // silencio
                 "", // audio
                 "snd/strike3ausencia.mp3", //ruta del audio
-                new IGU(),//interfaz gráfica
+                configuracionDeInterfazGrafica,//interfaz gráfica
                 new Tablero() //tablero
         );
         poncssMisMovimientos(ui);
@@ -249,31 +272,5 @@ final class DataModel {
         ui.applyBindings().contarTiempo();
         //Dialogs.screenSize();
         ui.setAudio(Dialogs.configuraAudio(ui.getRutaaudio()));
-    }
-    
-    ////////////// Funciones utilitarias para obytener los colores ////////////
-    @ComputedProperty
-    public static String obtenColorCafe(){
-        return "#926037";
-    }
-    
-    @ComputedProperty
-    public static String obtenColorRosita(){
-        return "#ED008C";
-    }
-    
-    @ComputedProperty
-    public static String obtenColorNaranja(){
-        return "#EB5731";
-    }
-    
-    @ComputedProperty
-    public static String obtenColorTurquesa(){
-        return "#24AAE1";
-    }
-    
-    @ComputedProperty
-    public static String obtenColorMarfil(){
-        return "#F9F2EC";
     }
 }

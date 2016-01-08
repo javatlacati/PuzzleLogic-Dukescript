@@ -7,7 +7,7 @@
         <link href="lib/ionic/css/ionic.css" rel="stylesheet">
         <link href="css/estilos.css" rel="stylesheet">
     </head>
-    <body class="fondoDePaisaje" data-bind="route: page, style:{backgroundImage: 'url(\"../img/fondo.png\")'}">
+    <body class="fondoDePaisaje" data-bind="route: page, style:{backgroundImage: 'url('+miGUI().rutaFondoApp+')'}">
         <audio id="musicadefondo"></audio>
 
         <div data-bind="template: { name: page }"></div>
@@ -62,7 +62,7 @@
         <script type="text/html" id="dashboard">
             <!--movimientos realizados-->
             <div class="row" data-bind="css:miGUI().claseMisMovimientos">
-            <!-- <div class="row" data-bind="style: {'background-color': miGUI().getColorFondo, 'border-size':'6px', 'border-style': 'solid', 'border-color': miGUI().getColorBorde}"> -->
+                <!-- <div class="row" data-bind="style: {'background-color': miGUI().getColorFondo, 'border-size':'6px', 'border-style': 'solid', 'border-color': miGUI().getColorBorde}"> -->
                 <div class="col">
                     <span style="float:left;">Mov:</span>
                     <span style="float:left;" id="movimientos" data-bind="text:movimientos;"></span>
