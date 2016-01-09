@@ -5,7 +5,6 @@ import com.dukescript.games.codermasters.puzzlelogic.js.Dialogs;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import net.java.html.json.ComputedProperty;
 import net.java.html.json.Function;
 import net.java.html.json.Model;
 import net.java.html.json.ModelOperation;
@@ -49,7 +48,6 @@ import net.java.html.json.Property;
 })
 
 final class DataModel {
-
     /**Tablero de juego*/
     @Model(className = "Tablero", targetId = "", properties = {
         /**Arreglo con las filas del tablero.*/
@@ -237,6 +235,16 @@ final class DataModel {
             }, 1000);
     } //TODO Ver si conviene más un runnable para no correrlo a mano
 
+    @Function
+    public static void pararSonido(final ConfiguracionJuego model){
+        if(model.isSilencio()){
+            //si ya está en silecio
+            Dialogs.configuraAudio(model.getRutaaudio());
+        }else{
+            //si no está en silencio
+            Dialogs.pararAudio();
+        }
+    }
     
     
     private static ConfiguracionJuego ui;
@@ -273,5 +281,8 @@ final class DataModel {
         //Dialogs.screenSize();
         ui.setAudio(Dialogs.configuraAudio(ui.getRutaaudio()));
         Dialogs.reproducirAudio();
+        
+        //TODO agregar una bandera para saber si se reproduce o no
+        //o checar desde js si el evento ya está escuchándose
     }
 }

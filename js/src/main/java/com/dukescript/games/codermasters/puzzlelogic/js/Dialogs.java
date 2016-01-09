@@ -60,15 +60,36 @@ public final class Dialogs {
     @JavaScriptBody(
             args = {},
             body = "var audioElement = document.getElementById('musicadefondo');"
+            + "var playtime=function playTime() {"
+            + "            audioElement.currentTime = 0;"
+            + "            audioElement .play();\n"
+            + "};"
             + "if (audioElement !== null){ " //TODO tal vez salga sobrando este if
-            + "            audioElement.addEventListener('ended', function() {\n"
-            + "            this.currentTime = 0;\n"
-            + "            this.play();\n"
-            + "            }, false);\n"
+            + "            audioElement.addEventListener('ended', playtime"
+            + "            , false);\n"
             + "            audioElement.play();"
             + "}"
     )
     public static native String reproducirAudio();
+
+    @JavaScriptBody(
+            args = {},
+            body = "var audioElement = document.getElementById('musicadefondo');"
+            + "var playtime=function playTime() {"
+            + "            audioElement.currentTime = 0;"
+            + "            audioElement .play();\n"
+            + "};"
+            + "if (audioElement !== null){ " //TODO tal vez salga sobrando este if
+            + " if (audioElement.removeEventListener) {   "
+            + "            audioElement.removeEventListener('ended',playtime);"
+            + " }else if(audioElement.detachEvent) {"
+            + "            audioElement.detachEvent('ended',playtime);"
+            + " }"
+            + "            audioElement.pause();\n"
+            + "            audioElement.currentTime = 0;"
+            + "}"
+    )
+    public static native String pararAudio();
 
     /**
      * This method registers the bindings.

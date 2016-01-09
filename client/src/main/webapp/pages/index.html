@@ -14,7 +14,7 @@
 
         <script type="text/html" id="home">
 
-            <a nav-direction="forward"  href="#/settings"><button class="button button-assertive icon ion-gear-a" style="float:right;"></button></a>
+            <a id="settinglink" href="#/settings"><button id="settingbutton" class="button button-assertive icon ion-gear-a" style="float:right;"></button></a>
             <br>
             <br>
             <!--logo-->
@@ -146,9 +146,7 @@
                         <i class="icon ion-volume-low"></i>
                         <input type="range" name="volume" min="0" max="100" value="60">
                         <i class="icon ion-volume-high"></i>
-                        <a href="" style="float:left; font-size:40px !important; margin-left: 5px; margin-right: 5px">
-                            <i class="icon ion-volume-mute"></i>
-                        </a>
+                        <i id="silencebutton" class="icon" data-bind="css:silencio?'ion-volume-high':'ion-volume-mute',click:pararSonido()" style="float:left; font-size:40px !important; margin-left: 5px; margin-right: 5px"></i>
                     </div>
                     <div class="item item-toggle">
                         Tutorial
