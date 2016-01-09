@@ -236,13 +236,15 @@ final class DataModel {
     } //TODO Ver si conviene más un runnable para no correrlo a mano
 
     @Function
-    public static void pararSonido(final ConfiguracionJuego model){
+    public static void silenciarSonido(ConfiguracionJuego model){
         if(model.isSilencio()){
             //si ya está en silecio
-            Dialogs.configuraAudio(model.getRutaaudio());
+            Dialogs.desilenciaAudio();
+            model.setSilencio(false);
         }else{
             //si no está en silencio
-            Dialogs.pararAudio();
+            Dialogs.silenciaAudio();
+            model.setSilencio(true);
         }
     }
     
