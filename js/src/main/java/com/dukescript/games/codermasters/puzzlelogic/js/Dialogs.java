@@ -56,17 +56,31 @@ public final class Dialogs {
             + "            audioElement.setAttribute('src',rutaMusica);\n"
     )
     public static native String configuraAudio(String rutaMusica);
+    
+    @JavaScriptBody(
+            args = {},
+            body = "var audioElement = document.getElementById('musicadefondo');" //" var audioElement = document.createElement('audio');\n"
+            + "            audioElement.muted = true;"
+    )
+    public static native void silenciaAudio();
+    
+    @JavaScriptBody(
+            args = {}, 
+            body= "var audioElement = document.getElementById('musicadefondo');" //" var audioElement = document.createElement('audio');\n"
+            + "            audioElement.muted = false;"
+    )
+    public static native void desilenciaAudio();
 
     @JavaScriptBody(
             args = {},
             body = "var audioElement = document.getElementById('musicadefondo');"
             + "var playtime=function playTime() {"
             + "            audioElement.currentTime = 0;"
-            + "            audioElement .play();\n"
+            + "            audioElement .play();"
             + "};"
             + "if (audioElement !== null){ " //TODO tal vez salga sobrando este if
             + "            audioElement.addEventListener('ended', playtime"
-            + "            , false);\n"
+            + "            , false);"
             + "            audioElement.play();"
             + "}"
     )
@@ -75,17 +89,15 @@ public final class Dialogs {
     @JavaScriptBody(
             args = {},
             body = "var audioElement = document.getElementById('musicadefondo');"
-            + "var playtime=function playTime() {"
-            + "            audioElement.currentTime = 0;"
-            + "            audioElement .play();\n"
-            + "};"
-            + "if (audioElement !== null){ " //TODO tal vez salga sobrando este if
-            + " if (audioElement.removeEventListener) {   "
-            + "            audioElement.removeEventListener('ended',playtime);"
-            + " }else if(audioElement.detachEvent) {"
-            + "            audioElement.detachEvent('ended',playtime);"
-            + " }"
-            + "            audioElement.pause();\n"
+            + "            audioElement.pause();"
+            + "}"
+    )
+    public static native String pausarAudio();
+    
+    @JavaScriptBody(
+            args = {},
+            body = "var audioElement = document.getElementById('musicadefondo');"
+            + "            audioElement.pause();"
             + "            audioElement.currentTime = 0;"
             + "}"
     )
