@@ -110,13 +110,19 @@ final class DataModel {
     public static void poncssMisMovimientos(ConfiguracionJuego model) {
         int esquemaDeColores=model.getColorGUI();
         String micolor;
-        switch(esquemaDeColores){
-        case 1: 
-                micolor="mismovimientosazul";
+        switch (esquemaDeColores) {
+            case 1:
+                micolor = "mismovimientosazul";
                 break;
-                default:
-                    micolor="mismovimientoscafe";
-                    break;
+            case 2:
+                micolor = "mismovimientoscafe";
+                break;
+            case 3:
+                micolor = "mismovimientosrojo";
+                break;
+            default:
+                micolor = "mismovimientosverde";
+                break;
         }
         
         
@@ -258,7 +264,7 @@ final class DataModel {
         //TODO cuando se administre la música desde eñ backen usar nativo RemoveListener para quitar el loop.
         Usuario usuario = new Usuario("tontonymous", "9:99:99", "99999", "-1");
         IGU configuracionDeInterfazGrafica = new IGU();
-        configuracionDeInterfazGrafica.setRutaFondoApp("../img/fondo.png");
+        configuracionDeInterfazGrafica.setRutaFondoApp("url(img/fondo.png)");
         ui= new ConfiguracionJuego(
                 0, //movimientos
                 0, //segundos
@@ -268,7 +274,7 @@ final class DataModel {
                 4, //filas tablero
                 4, //columnas tablero
                 true, //tutorial
-                1, //color interfaz
+                2, //color interfaz
                 usuario, //datos de usuario
                 false, // silencio
                 "", // audio

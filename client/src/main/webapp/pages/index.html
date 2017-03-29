@@ -7,7 +7,7 @@
         <link href="lib/ionic/css/ionic.css" rel="stylesheet">
         <link href="css/estilos.css" rel="stylesheet">
     </head>
-    <body class="fondoDePaisaje" data-bind="route: page, style:{backgroundImage: 'url('+miGUI().rutaFondoApp+')'}">
+    <body class="fondoDePaisaje" data-bind="route: page, style:{'background-image': miGUI().rutaFondoApp}">
         <audio id="musicadefondo"></audio>
 
         <div data-bind="template: { name: page }"></div>
@@ -79,8 +79,8 @@
             <!--div id="board"></div-->
 
 
-            <div data-bind="foreach: tablero().filas" class='container'>
-                <div class="row" id="tabla1" data-bind='attr:{ id: "tabla" + ($index() + 1)   }'>
+            <div data-bind="foreach: tablero().filas">
+                <div class="row container" id="tabla1" data-bind='attr:{ id: "tabla" + ($index() + 1)   }'>
                     <div class="row tabla" data-bind="foreach: columnas">
                         <div class="col col-xs-3" id="p1" data-bind="foreach:fichas, attr:{ posicion: $index() + 1, id: 'p' + (($index()+1) + ($parentContext.$index() * 4))}">
                             <p data-bind="text:NumeroLetraSimbolo"></p>
@@ -88,33 +88,6 @@
                     </div>
                 </div>
             </div>
-
-            <!--crearemos la tabla
-            <div class="row tabla" id="tabla1">
-                <div class="col" posicion="0" id="p1" ng-click="mensaje($event)">1</div>
-                <div class="col" posicion="1" id="p2" ng-click="mensaje($event)">2</div>
-                <div class="col" posicion="2" id="p3" ng-click="mensaje($event)">3</div>
-                <div class="col" posicion="3" id="p4" ng-click="mensaje($event)">4</div>
-            </div> 
-            <div class="row tabla" id="tabla2">
-                <div class="col" posicion="0" id="p5" ng-click="mensaje($event)">5</div>
-                <div class="col" posicion="1" id="p6" ng-click="mensaje($event)">6</div>
-                <div class="col" posicion="2" id="p7" ng-click="mensaje($event)">7</div>
-                <div class="col" posicion="3" id="p8" ng-click="mensaje($event)">8</div>
-            </div>
-            <div class="row tabla" id="tabla3">
-                <div class="col" posicion="0" id="p9" ng-click="mensaje($event)">9</div>
-                <div class="col" posicion="1" id="p10" ng-click="mensaje($event)">10</div>
-                <div class="col" posicion="2" id="p11" ng-click="mensaje($event)">11</div>
-                <div class="col" posicion="3" id="p12" ng-click="mensaje($event)">12</div>
-            </div>
-            <div class="row tabla" id="tabla4"> 
-                <div class="col" posicion="0" id="p13" ng-click="mensaje($event)">13</div>
-                <div class="col" posicion="1" id="p14" ng-click="mensaje($event)">14</div>
-                <div class="col" posicion="2" id="p15" ng-click="mensaje($event)">15</div>
-                <div class="col vacio" posicion="3" id="p16" ng-click="mensaje($event)"></div>
-            </div>  
-            -->
 
             <!--volver-->
             <div data-bind="css:miGUI().claseMisMovimientos">
@@ -159,7 +132,7 @@
                     </div>
                     <label class="item item-input item-select">
                         <div class="input-label">
-                            Color de la Ficha
+                            Color de la Interfaz gráfica
                         </div>
                         <select name="color" data-bind="value:colorGUI">
                             <option value="1">Azul</option>
@@ -167,7 +140,18 @@
                             <option value="3">Rojo</option>
                             <option value="4">Verde</option>
                         </select>
-                    </label>    
+                    </label>
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                            Color de la Ficha
+                        </div>
+                        <select name="color">
+                            <option value="1">Azul</option>
+                            <option value="2" selected>Beige</option>
+                            <option value="3">Rojo</option>
+                            <option value="4">Verde</option>
+                        </select>
+                    </label>
                     <div>
                         M&aacute;sica de fondo: <input type="file" name="sndfile" >
                     </div>
