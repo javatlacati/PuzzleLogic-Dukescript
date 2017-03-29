@@ -13,6 +13,7 @@ $marfil:#F9F2EC;
 $verdeAyuda: #30F420;
 $sombra: #333;
 $amarillo:#eaea00;
+$rojo:#df000C; 
 
 ////// Colores para las letras del menú /////////
 $colores-letras: (
@@ -202,6 +203,28 @@ div{
     }
     .mismovimientosazul{ 
         border:6px solid $turquesa;	
+        background-color: $marfil;
+        /*span{
+            font-weight: bold;
+            font-size: 25px;
+            color: $cafe;
+            float:left;
+           }
+        */
+    }
+    .mismovimientosrojo{ 
+        border:6px solid $rojo;	
+        background-color: $marfil;
+        /*span{
+            font-weight: bold;
+            font-size: 25px;
+            color: $cafe;
+            float:left;
+           }
+        */
+    }
+    .mismovimientosverde{ 
+        border:6px solid $verde_pasto;	
         background-color: $marfil;
         /*span{
             font-weight: bold;
