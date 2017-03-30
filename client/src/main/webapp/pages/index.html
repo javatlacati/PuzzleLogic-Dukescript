@@ -80,9 +80,9 @@
 
 
             <div data-bind="foreach: tablero().filas">
-                <div class="row container" id="tabla1" data-bind='attr:{ id: "tabla" + ($index() + 1)   }'>
+                <div class="row container" data-bind='attr:{ id: "tabla" + ($index() + 1)   }'>
                     <div class="row tabla" data-bind="foreach: columnas">
-                        <div class="col col-xs-3" id="p1" data-bind="foreach:fichas, attr:{ posicion: $index() + 1, id: 'p' + (($index()+1) + ($parentContext.$index() * 4))}">
+                        <div class="col col-xs-3" data-bind="foreach:fichas, attr:{ posicion: $index() + 1, id: 'p' + (($index()+1) + ($parentContext.$index() * 4))}">
                             <p data-bind="text:NumeroLetraSimbolo"></p>
                         </div>
                     </div>
