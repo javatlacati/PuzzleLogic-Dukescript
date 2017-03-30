@@ -178,7 +178,7 @@ final class DataModel {
         arreglofichas.add(new Ficha("col vacio", ""));
         Collections.shuffle(arreglofichas);//se ordenan aleatoriamente
 
-        List<Fila> arreglofilas = new ArrayList<Fila>();
+        List<Fila> arreglofilas = new ArrayList<>();
         //List<Columna> arreglocolumnasdelafila = new ArrayList<Columna>();
         int fichaActual = 0;
         for (int i = 0; i < numeroDeFilas; i++) {
@@ -212,10 +212,9 @@ final class DataModel {
     @ComputedProperty
     static boolean verificarGanarJuego(Tablero tablero, int filas, int columnas) {
         int filasCorrectas = 0;
-        
-        Tablero tableroGanador=generaTablero(filas, columnas);
-        
-        
+
+        Tablero tableroGanador = generaTablero(filas, columnas);
+
         //ahora si la verificación
         for (int i = 0; i < filas; i++) {
             Fila fila = tableroGanador.getFilas().get(i);
@@ -223,14 +222,14 @@ final class DataModel {
             for (int j = 0; j < columnas; j++) {
                 Columna columna = fila.getColumnas().get(j);
                 Columna columnaJugador = filajugador.getColumnas().get(j);
-                if(!columna.getFichas().get(0).getNumeroLetraSimbolo().get(0).equals(columnaJugador.getFichas().get(0).getNumeroLetraSimbolo().get(0))){
+                if (!columna.getFichas().get(0).getNumeroLetraSimbolo().get(0).equals(columnaJugador.getFichas().get(0).getNumeroLetraSimbolo().get(0))) {
                     return false;
                 }
             }
         }
         return true;
     }
-    
+
     /**
      * Devuelve los contadores a cero.
      */
@@ -238,6 +237,34 @@ final class DataModel {
     public static void reiniciaTiempo(ConfiguracionJuego model) {
         model.setContador_minutos(0);
         model.setContador_segundos(0);
+    }
+
+    @ModelOperation
+    public static void realizaMovimiento(ConfiguracionJuego model, String NumeroLetraSimbolo) {
+        // la casilla vacía no se mueve al darle click
+        if(NumeroLetraSimbolo.equals("")){
+            return;
+        }
+        Tablero tablero = model.getTablero();
+        int filas = tablero.getFilas().size();
+        int columnas = tablero.getFilas().get(0).getColumnas().size();
+        int numFila=-1;
+        int numColumna=-1;
+        //obten posicion de la ficha a la que se le dio click
+        buscaFicha(NumeroLetraSimbolo, tablero, filas, columnas, numFila, numColumna);
+        if(numFila!=-1){
+            //ERROR
+            System.err.println(NumeroLetraSimbolo+" No existe!");
+        }else{
+            int numFilaBlanca=-1;
+            int numColumnaBlanca=-1;
+            //obten posición de la ficha blanca
+            buscaFicha("", tablero, filas, columnas, numFilaBlanca, numColumnaBlanca);
+            // si es adyacente al ficha blanca a la que se le dió click
+            // reralizamos movimiento
+            //si no es adyacente no podemos mover
+        }
+                
     }
 
     @Function
@@ -287,7 +314,7 @@ final class DataModel {
             model.setSilencio(true);
         }
     }
-    
+
     private static Tablero generaTablero(int filas, int columnas) {
         //se genera un tablero correcto para comparar
         Tablero tableroGanador = new Tablero();
@@ -300,7 +327,7 @@ final class DataModel {
             arreglofichas.add(new Ficha("col ", (index + 1) + ""));
         }
         arreglofichas.add(new Ficha("col vacio", ""));
-        List<Fila> arreglofilas = new ArrayList<Fila>();
+        List<Fila> arreglofilas = new ArrayList<>();
         //List<Columna> arreglocolumnasdelafila = new ArrayList<Columna>();
         int fichaActual = 0;
         for (int i = 0; i < numeroDeFilas; i++) {
@@ -325,6 +352,21 @@ final class DataModel {
         //for en donde colocaremos las tablas de una forma aleatoria
         tableroGanador.getPosiciones_tablero().addAll(posiciones_tablero);
         return tableroGanador;
+    }
+    
+    private static void buscaFicha(String NumeroLetraSimbolo, Tablero tablero, int filas, int columnas, int numFila, int numColumna) {
+        for (int i = 0; i < filas; i++) {
+            Fila fila = tablero.getFilas().get(i);
+            for (int j = 0; j < columnas; j++) {
+                Columna columna = fila.getColumnas().get(j);
+                Ficha ficha = columna.getFichas().get(0);
+                if(NumeroLetraSimbolo.equals(ficha.getNumeroLetraSimbolo().get(0))){
+                    numFila=i;
+                    numColumna=j;
+                    break;
+                }
+            }
+        }
     }
 
     private static ConfiguracionJuego ui;
