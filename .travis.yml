@@ -22,3 +22,6 @@ before_install:
 #  - sleep 3
 install:
   - mvn -pl '!client-android' install -DskipTests=true -Dmaven.javadoc.skip=true -B -ntp
+
+script:
+  - mvn -pl '!client-android' test -B
