@@ -17,7 +17,7 @@
     <name>puzzlelogic Client for NetBeans</name>
 
     <properties>
-        <netbeans.version>RELEASE112</netbeans.version>
+        <netbeans.version>RELEASE120-1</netbeans.version>
         <netbeans.compile.on.save>none</netbeans.compile.on.save>
         <project.mainclass>com.dukescript.games.codermasters.puzzlelogic.NbMain</project.mainclass>
     </properties>
