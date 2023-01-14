@@ -5,11 +5,10 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.java.html.boot.script.Scripts;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.netbeans.html.boot.spi.Fn;
-import static org.testng.Assert.assertEquals;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
 /**
  * Tests for behavior of @JavaScriptBody methods. Set your JavaScript
@@ -33,7 +32,7 @@ public class JsInteractionTest {
     /**
      * Tests initialization of the JS engine.
      */
-    @BeforeMethod
+    @Before
     public void initializeJSEngine() {
 
         jsEngine = Fn.activate(Scripts.createPresenter());
@@ -43,7 +42,7 @@ public class JsInteractionTest {
     /**
      * Tests shutdown of the JS engine.
      */
-    @AfterMethod
+    @After
     public void shutdownJSEngine() {
         try {
             jsEngine.close();
