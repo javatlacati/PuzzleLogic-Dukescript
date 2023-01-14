@@ -24,7 +24,7 @@ jobs:
         - linux
       language: java
       install:
-        - mvn install -pl com.dukescript.games.codermasters:puzzlelogic-pom,com.dukescript.games.codermasters:puzzlelogic-js, com.dukescript.games.codermasters:puzzlelogic-client, com.dukescript.games.codermasters:puzzlelogic-web, com.dukescript.games.codermasters:puzzlelogic-netbeans -Dmaven.javadoc.skip=true -B -ntp
+        - mvn install -pl com.dukescript.games.codermasters:puzzlelogic-pom,com.dukescript.games.codermasters:puzzlelogic-js,com.dukescript.games.codermasters:puzzlelogic,com.dukescript.games.codermasters:puzzlelogic-web,com.dukescript.games.codermasters:puzzlelogic-nb -Dmaven.javadoc.skip=true -B -ntp
       script:
         - mvn test -pl com.dukescript.games.codermasters:puzzlelogic-js, -B -ntp
       after_success:

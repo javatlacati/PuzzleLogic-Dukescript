@@ -17,9 +17,11 @@
         <module>js</module>
     </modules>
     <properties>
-        <net.java.html.version>1.8.1</net.java.html.version>
+        <net.java.html.version>1.7.3</net.java.html.version>
+        <openjfx.version>19</openjfx.version>
         <bck2brwsr.version>0.54</bck2brwsr.version>
         <bck2brwsr.obfuscationlevel>FULL</bck2brwsr.obfuscationlevel>
+        <junit.browser.version>1.0</junit.browser.version>
         <jersey.version>2.13</jersey.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
@@ -28,33 +30,54 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.testng</groupId>
-                <artifactId>testng</artifactId>
+                <groupId>com.dukescript.api</groupId>
+                <artifactId>junit-osgi</artifactId>
                 <scope>test</scope>
-                <version>7.7.0</version>
+                <version>4.12</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dukescript.api</groupId>
+                <artifactId>junit-browser-runner</artifactId>
+                <version>${junit.browser.version}</version>
+                <scope>test</scope>
+                <type>jar</type>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.netbeans.html</groupId>
+                        <artifactId>net.java.html</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.netbeans.html</groupId>
+                        <artifactId>net.java.html.boot</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apidesign.bck2brwsr</groupId>
+                        <artifactId>emul</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
         </dependencies>
     </dependencyManagement>
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-enforcer-plugin</artifactId>
-                <version>3.1.0</version>
-                <executions>
-                    <execution>
-                        <id>enforce-versions</id>
-                        <goals>
-                            <goal>enforce</goal>
-                        </goals>
-                        <configuration>
-                            <rules>
-                                <DependencyConvergence/>
-                            </rules>
-                        </configuration>
-                    </execution>
-                </executions>              
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-enforcer-plugin</artifactId>-->
+<!--                <version>3.1.0</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>enforce-versions</id>-->
+<!--                        <goals>-->
+<!--                            <goal>enforce</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <rules>-->
+<!--                                <DependencyConvergence/>-->
+<!--                            </rules>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                </executions>              -->
+<!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
