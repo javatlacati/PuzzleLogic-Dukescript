@@ -193,11 +193,11 @@
                 <teavm.version>0.7.0</teavm.version>
                 <teavm.debug>false</teavm.debug>
                 <browser.bootstrap>initialize TeaVM --&gt;
-&lt;script type="text/javascript" src="teavm.js"&gt;&lt;/script&gt;
-&lt;script&gt;
-    main();
-&lt;/script&gt;
-&lt;!-- end of initialization </browser.bootstrap>
+                    &lt;script type="text/javascript" src="teavm.js"&gt;&lt;/script&gt;
+                    &lt;script&gt;
+                    main();
+                    &lt;/script&gt;
+                    &lt;!-- end of initialization </browser.bootstrap>
             </properties>
             <dependencies>
                 <!-- needs special compile time dep otherwise TeaVM ignores the JAR -->
