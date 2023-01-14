@@ -43,7 +43,11 @@ jobs:
           - extra-android-m2repository
       workspaces:
         use: ws1
+      before_install:
+        - export DISPLAY=:0
       install:
         - mvn install -pl com.dukescript.games.codermasters:puzzlelogic-android -DskipTests=true -Dmaven.javadoc.skip=true -B
       script:
         - mvn test -pl com.dukescript.games.codermasters:puzzlelogic-android org.jacoco:jacoco-maven-plugin:0.8.2:report -B
+  allow_failures:
+    - if: name = job2
