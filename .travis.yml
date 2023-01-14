@@ -24,7 +24,7 @@ jobs:
         - linux
       language: java
       install:
-        - mvn install -pl com.dukescript.games.codermasters:puzzlelogic-js, com.dukescript.games.codermasters:puzzlelogic-client, com.dukescript.games.codermasters:puzzlelogic-web, com.dukescript.games.codermasters:puzzlelogic-netbeans -Dmaven.javadoc.skip=true -B -ntp
+        - mvn install -pl com.dukescript.games.codermasters:puzzlelogic-pom,com.dukescript.games.codermasters:puzzlelogic-js, com.dukescript.games.codermasters:puzzlelogic-client, com.dukescript.games.codermasters:puzzlelogic-web, com.dukescript.games.codermasters:puzzlelogic-netbeans -Dmaven.javadoc.skip=true -B -ntp
       script:
         - mvn test -pl com.dukescript.games.codermasters:puzzlelogic-js, -B -ntp
       after_success:
@@ -45,6 +45,6 @@ jobs:
       workspaces:
         use: ws1
       install:
-        - mvn install -pl com.dukescript.games.codermasters:puzzlelogic-android,com.dukescript.games.codermasters:puzzlelogic-pom -DskipTests=true -Dmaven.javadoc.skip=true -B -ntp
+        - mvn install -pl com.dukescript.games.codermasters:puzzlelogic-android -DskipTests=true -Dmaven.javadoc.skip=true -B -ntp
       script:
         - mvn test -pl com.dukescript.games.codermasters:puzzlelogic-android org.jacoco:jacoco-maven-plugin:0.8.2:report -B -ntp
