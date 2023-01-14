@@ -5,13 +5,6 @@ cache:
 services:
   - xvfb
 
-addons:
-  chrome: stable
-before_install:
-  - sudo apt-get -qq update || echo no sudo apt-get
-  # start your web application and listen on `localhost`
-  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
-
 stages:
   - compile
   - compile1
@@ -23,6 +16,12 @@ jobs:
       os:
         - linux
       language: java
+      addons:
+        chrome: stable
+      before_install:
+        - sudo apt-get -qq update || echo no sudo apt-get
+        # start your web application and listen on `localhost`
+        - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
       install:
         - mvn install -pl com.dukescript.games.codermasters:puzzlelogic-pom,com.dukescript.games.codermasters:puzzlelogic-js,com.dukescript.games.codermasters:puzzlelogic,com.dukescript.games.codermasters:puzzlelogic-web,com.dukescript.games.codermasters:puzzlelogic-nb -Dmaven.javadoc.skip=true -B -ntp
       script:
