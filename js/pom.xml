@@ -76,6 +76,7 @@
                   <junitArtifactName>com.dukescript.api:junit-osgi</junitArtifactName>
                   <systemPropertyVariables>
                       <fxpresenter.headless>true</fxpresenter.headless>
+                      <java.awt.headless>true</java.awt.headless>
                   </systemPropertyVariables>
               </configuration>
           </plugin>
