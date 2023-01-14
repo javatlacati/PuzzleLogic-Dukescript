@@ -50,8 +50,6 @@ jobs:
         use: ws1
       before_install:
         - "export DISPLAY=:99.0"
-        - "sh -e /etc/init.d/xvfb start"
-        - sleep 3 # give xvfb some time to start
       install:
         - mvn install -pl com.dukescript.games.codermasters:puzzlelogic-android -DskipTests=true -Dmaven.javadoc.skip=true -B
       script:
