@@ -17,7 +17,7 @@
         <module>js</module>
     </modules>
     <properties>
-        <net.java.html.version>1.7.3</net.java.html.version>
+        <net.java.html.version>1.8.1</net.java.html.version>
         <openjfx.version>20.0.1</openjfx.version>
         <bck2brwsr.version>0.54</bck2brwsr.version>
         <bck2brwsr.obfuscationlevel>FULL</bck2brwsr.obfuscationlevel>
